@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Форма регистрации</title>
+
+</head>
+<body>
+<div class='header'>
+    <div class="container">
+        <div class="header-line">
+            <div class = 'heder-logo'>
+                <img src="logo.png" alt="">
+            </div>
+
+            <div class="nav">
+                <a class="nav-item" href="@">О нас</a>
+                <a class="nav-item" href="@">Каталог</a>
+                <a class="nav-item-yellow" href="@">Поиск объявлений</a>
+
+
+            </div>
+            <div class="notion">
+                <img src="ring.png" alt="">
+                <a class = "notion-item" href="@">Уведомления</a>
+            </div>
+            <div class="menu-button">
+                <img src="menubutton.png" alt="">
+            </div>
+
+        </div>
+    </div>
+    <div class="main">
+        <div>
+            <a class="slogan">ПУТЕШЕСТВУЙ ПО <br> РОССИИ</a>
+        </div>
+        <div class="water-text">
+            <a class="rigust-text">Зарегистрируйся<br></a>
+            <a class="text-motivation">И получи доступ ко всем<br> возможностям сервиса</a>
+        </div>
+        <div class="registration">
+            <div class="person-information">
+                <div class="person-information-title">
+                    <a class="person-information-title-text">Личная информация</a>
+                </div>
+                <div class="person-information-container">
+                    <div class="person-information-photo-block">
+                        <img src="man.png" alt="">
+                    </div>
+                    <div class="person-information-block">
+                        <form action="">
+                            <label for="name">Имя пользователя</label>
+                            <input type="text" id="login" placeholder="Текст">
+
+                            <label for="email">Почта</label>
+                            <input type="email" id="email" placeholder="Текст">
+
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" placeholder="********">
+
+                            <label for="repeat password">Повторите пароль</label>
+                            <input type="password" id="repeat password" placeholder="********">
+                        </form>
+                    </div>
+                </div>
+                <div class="person-information-title">
+                    <a class="person-information-title-text">Расскажите о себе</a>
+                </div>
+                <div class="person-information-container">
+                    <div class="person-information-block">
+                        <form action="">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" placeholder="Текст">
+                            <legend class="text-information">Ваш пол</legend>
+                            <input type="radio" name="gender" id="man" class="form-check-input">
+                            <label for="man" class="form-check-label">Мужской</label>
+
+                            <input type="radio" name="gender" id="woman" class="form-check-input">
+                            <label for="woman" class="form-check-label">Женский</label>
+
+                            <div class="center">
+                                <a class="text-information">Оцените Вашу общительность</a>
+                                <div class="slider">
+                                    <div class="show-value">
+                                        <span id="current-value">5</span>
+                                    </div>
+                                    <input type="range" id="custom-slider" min="0"  max="10" value="5" step="1">
+
+                                </div>
+                            </div>
+                            <label for="social-network">Ваша социальная сеть</label>
+                            <input type="text" id="social-network" placeholder="Текст">
+                        </form>
+                    </div>
+                    <div class="additional-information-photo-block">
+                        <img src="chid.png" alt="">
+                    </div>
+                </div>
+                <div class="person-information-title">
+                    <a class="person-information-title-text">Интересы</a>
+                </div>
+                <div class="person-information-container">
+                    <div>
+                        <img src="woman.png" alt="">
+                    </div>
+                    <div class="person-information-block">
+                        <form action="">
+                            <label for="interest">Чем Вы занимаетесь?</label>
+                            <select onchange="handleSelectColorChange(this);" name="interest" id="interest">
+                                <option value="" disabled selected>Выбор элемента и “другое”</option>
+                                <option value="other">Другое</option>
+
+                            </select>
+
+                            <label for="point">Для чего Вы регистрируетесь?</label>
+                            <select onchange="handleSelectColorChange(this);" name="point" id="point">
+                                <option disabled selected value="">Выбор элемента и “другое”</option>
+                                <option value="find">Найти жилье</option>
+                                <option value="pass">Сдать жилье</option>
+                                <option value="other">Другое</option>
+                            </select>
+
+                            <label for="pets">Как относитесь к домашним животным?</label>
+                            <select onchange="handleSelectColorChange(this);" name="pets" id="pets">
+                                <option value="" disabled selected><span style="color: #B3B3B3">Выбор элемента и “другое”</span></option>
+                                <option value="positively">Положительно</option>
+                                <option value="neutral">Нейтрально</option>
+                                <option value="negatively">Негативно</option>
+                                <option value="other">Другое</option>
+                            </select>
+
+                            <label for="smoking">Как относитесь к курению?</label>
+                            <select onchange="handleSelectColorChange(this);" name="smoking" id="smoking">
+                                <option value="" disabled selected>Выбор элемента и “другое”</option>
+                                <option value="positively">Курю</option>
+                                <option value="neutral">Нейтрально</option>
+                                <option value="negatively">Негативно</option>
+                                <option value="other">Другое</option>
+                            </select>
+
+                            <label for="alcohol">Как относитесь к алкоголю?</label>
+                            <select onchange="handleSelectColorChange(this);" name="alcohol" id="alcohol">
+                                <option value="" >Выбор элемента и “другое”</option>
+                                <option value="positively">Могу выпить</option>
+                                <option value="neutral">Нейтрально</option>
+                                <option value="negatively">Негативно</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class = person-information-title></div>
+                <div>
+                    <input type="checkbox" name="checkboxname" id="share-person-information-checkbox" value="value">
+                    <label for="share-person-information-checkbox" class="checkbox-label">Я даю согласие на обработку моих персональных данных</label>
+                </div>
+                <div>
+                    <button class="submit-button" type="submit" name="submit-button">Зарегистрироваться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class = 'footer-logo'>
+            <img src="logo2.png" alt="">
+        </div>
+        <div class="menu-text">
+            <a class="footer-title-text">Меню<br></a>
+            <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+        </div>
+        <div class="services-text">
+            <a class="footer-title-text">Услуги<br></a>
+            <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+        </div>
+        <div class="information-text">
+            <a class="footer-title-text">Информация<br></a>
+            <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+        </div>
+        <div class="contact-text">
+            <a class="footer-title-text">Кoнтакты<br></a>
+            <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+        </div>
+    </div>
+
+</div>
+<script src="form.js"></script>
+</body>
+</html>
