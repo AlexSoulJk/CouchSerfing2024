@@ -2,19 +2,20 @@
 import os
 
 from dotenv import load_dotenv
+from sqlalchemy.ext.asyncio import AsyncAttrs
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy_utils import StringEncryptedType
 from sqlalchemy_utils.types.encrypted.encrypted_type import AesEngine
 
 
-
-
 load_dotenv()
-Base = declarative_base()
 secret_key = os.getenv("secret_key_sql")
 
+
+class Base(AsyncAttrs, DeclarativeBase):
+    pass
 
 class User(Base):
     __tablename__ = 'users'
