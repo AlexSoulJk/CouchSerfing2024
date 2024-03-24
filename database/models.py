@@ -1,32 +1,32 @@
-
 import os
 
 from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncAttrs
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, declared_attr
 from sqlalchemy_utils import StringEncryptedType
 from sqlalchemy_utils.types.encrypted.encrypted_type import AesEngine
-
 
 load_dotenv()
 secret_key = os.getenv("secret_key_sql")
 
 
 class Base(AsyncAttrs, DeclarativeBase):
-    pass
+    __abstract__ = True
 
-class User(Base):
-    __tablename__ = 'users'
+    @declared_attr
+    def __tablename__(cls) -> str:
+        return f"{cls.__name__.lower()}s"
 
     id = Column(Integer, primary_key=True)
 
+
+class User(Base):
     nickname = Column(String(100), nullable=False, unique=True)
 
     date_created = Column(Date, nullable=False)
     date_deleted = Column(Date, nullable=True)
-
 
     login = Column(StringEncryptedType(String(100), secret_key, AesEngine,
                                        'pkcs5', length=100), nullable=False)
@@ -38,11 +38,7 @@ class User(Base):
     telegram_tag = Column(String(60), nullable=True)
 
 
-
 class Room(Base):
-    __tablename__ = 'rooms'
-
-    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
 
     date_created = Column(Date, nullable=False)
@@ -53,26 +49,16 @@ class Room(Base):
 
 
 class Rule(Base):
-    __tablename__ = 'rules'
-
-    id = Column(Integer, primary_key=True)
-
     description = Column(String(100), nullable=False)
     url_pic = Column(String(100), nullable=False)
 
 
-class RoomRules(Base):
-    __tablename__ = 'roomrules'
-
-    id = Column(Integer, primary_key=True)
+class RoomRule(Base):
     room_id = Column(Integer, ForeignKey("rooms.id"))
     rule_id = Column(Integer, ForeignKey("rules.id"))
 
 
-class RoomPictures(Base):
-    __tablename__ = 'roompictures'
-
-    id = Column(Integer, primary_key=True)
+class RoomPicture(Base):
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
     date_created = Column(Date, nullable=False)
@@ -82,9 +68,6 @@ class RoomPictures(Base):
 
 
 class Notification(Base):
-    __tablename__ = "notifications"
-
-    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
 
     date_created = Column(Date, nullable=False)
@@ -94,9 +77,6 @@ class Notification(Base):
 
 
 class Favorite(Base):
-    __tablename__ = "favorites"
-
-    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
@@ -105,9 +85,6 @@ class Favorite(Base):
 
 
 class Deal(Base):
-    __tablename__ = "deals"
-
-    id = Column(Integer, primary_key=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
     guest_id = Column(Integer, ForeignKey("users.id"))
     room_id = Column(Integer, ForeignKey("rooms.id"))

@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 
@@ -41,4 +42,12 @@ class Database:
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 db = Database(os.getenv("db_url"))
-db.connect()
+
+async def main():
+    load_dotenv()
+    logging.basicConfig(level=logging.INFO)
+    db = Database(os.getenv("db_url"))
+    await db.connect()
+    await db.disconnect()
+
+asyncio.run(main())
