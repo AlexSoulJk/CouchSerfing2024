@@ -1,15 +1,9 @@
-import os
+from datetime import datetime
 
-from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncAttrs
 
-from sqlalchemy import Column, Integer, String, ForeignKey, Date
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP
 from sqlalchemy.orm import DeclarativeBase, declared_attr
-from sqlalchemy_utils import StringEncryptedType
-from sqlalchemy_utils.types.encrypted.encrypted_type import AesEngine
-
-load_dotenv()
-secret_key = os.getenv("secret_key_sql")
 
 
 class Base(AsyncAttrs, DeclarativeBase):
@@ -25,14 +19,16 @@ class Base(AsyncAttrs, DeclarativeBase):
 class User(Base):
     nickname = Column(String(100), nullable=False, unique=True)
 
-    date_created = Column(Date, nullable=False)
+    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_deleted = Column(Date, nullable=True)
 
-    login = Column(StringEncryptedType(String(100), secret_key, AesEngine,
-                                       'pkcs5', length=100), nullable=False)
+    login = Column(String(100), nullable=False)
 
-    password = Column(StringEncryptedType(String(100), secret_key, AesEngine,
-                                          'pkcs5', length=100), nullable=False)
+    hashed_password = Column(String(length=1024), nullable=False)
+
+    is_active: bool = Column(Boolean, default=True, nullable=False)
+    is_superuser: bool = Column(Boolean, default=False, nullable=False)
+    is_verified: bool = Column(Boolean, default=False, nullable=False)
 
     email = Column(String(60), nullable=False)
     telegram_tag = Column(String(60), nullable=True)
@@ -41,7 +37,7 @@ class User(Base):
 class Room(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
-    date_created = Column(Date, nullable=False)
+    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_disabled = Column(Date, nullable=True)
     date_deleted = Column(Date, nullable=True)
 
@@ -61,7 +57,7 @@ class RoomRule(Base):
 class RoomPicture(Base):
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
-    date_created = Column(Date, nullable=False)
+    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_disabled = Column(Date, nullable=True)
 
     url_picture = Column(String(100), nullable=False)
@@ -70,7 +66,7 @@ class RoomPicture(Base):
 class Notification(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
 
-    date_created = Column(Date, nullable=False)
+    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_deleted = Column(Date, nullable=True)
 
     text = Column(String(400), nullable=False)
@@ -89,6 +85,6 @@ class Deal(Base):
     guest_id = Column(Integer, ForeignKey("users.id"))
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
-    date_created = Column(Date, nullable=False)
+    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_closed = Column(Date, nullable=True)
     status = Column(Integer, nullable=False)
