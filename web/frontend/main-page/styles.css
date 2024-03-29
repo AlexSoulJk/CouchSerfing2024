@@ -380,7 +380,7 @@ a:hover {
 .travel-russia {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /*align-items: center;*/
     width: 970px;
     max-width: 100%;
     flex-direction: column;
@@ -440,26 +440,24 @@ a:hover {
     }
 }
 
-.search-text {
-    color: #616161;
-    font-family: var(--font-family);
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: auto 0;
-}
-
 .search-container {
+    width: 80%;
+    background-color: transparent;
+    border: transparent;
     display: flex;
-    gap: 18px;
     color: #222;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
 }
 
 @media (max-width: 991px) {
     .search-container {
         white-space: initial;
     }
+}
+
+.search-container:focus {
+    outline: none;
 }
 
 .search-icon {
@@ -532,14 +530,23 @@ a:hover {
 
 /* Секция с карточками */
 
+#swiper1 {
+    width: 90%;
+}
+
+#swiper2 {
+    width: 80%;
+}
+
 .location-cards {
-    display: flex;
-    margin-top: 46px;
-    align-items: center;
-    gap: 20px;
+    position: relative;
+    /*display: flex;*/
+    margin-top: 32px;
+    /*align-items: center;*/
+    /*gap: 20px;*/
     color: #222;
     font-weight: 600;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 @media (max-width: 991px) {
@@ -548,23 +555,35 @@ a:hover {
     }
 }
 
-.arrow-icon {
-    aspect-ratio: 0.43;
-    object-position: center;
-    width: 19px;
-    fill: #fff;
-    align-self: stretch;
-    margin: auto 0;
+.arrow--left {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 1;
+}
+
+.arrow--right {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .location-card {
     border-radius: 10px;
     background-color: #d9d9d9;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    margin: auto 0;
     padding: 8px 6px;
+    transition: transform 0.3s ease; /* Плавное изменение размеров */
+    transform-origin: center center; /* Установка центра масштабирования */
 }
 
 .location-image {
@@ -779,10 +798,12 @@ a:hover {
 /* Отзывы? */
 
 .testimonial-container {
-    display: flex;
+    position: relative;
     align-items: center;
     gap: 50px;
     margin-top: 44px;
+    margin-left: auto;
+    margin-right: auto;
     width: 90%;
 }
 
@@ -791,15 +812,6 @@ a:hover {
         flex-wrap: wrap;
         max-width: 100%;
     }
-}
-
-.quote-icon {
-    width: 19px;
-    fill: #fff;
-    margin: auto 0;
-    align-self: stretch;
-    aspect-ratio: 0.43;
-    object-position: center;
 }
 
 .testimonial-content {

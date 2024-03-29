@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Couch Surfing</title>
     <link rel="stylesheet" href="styles.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 </head>
 <body>
 <header class="header">
@@ -18,7 +22,7 @@
         </nav>
         <div class="notification-container">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
-            <span class="notification-text">Уведомления</span>
+            <a href="#" class="notification-text">Уведомления</a>
         </div>
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image" />
     </div>
@@ -32,20 +36,25 @@
         И присоединяйся к нашему <br /> сообществу
     </p>
     <section class="search-bar">
-        <p class="search-text">Начни поиск прямо сейчас</p>
-        <div class="search-container">
+        <input type="text" class="search-container" placeholder="Начни поиск прямо сейчас">
             <img src="../search-icon.png" alt="" class="search-icon" />
             <div class="search-button-container">
                 <div class="search-divider"></div>
                 <button class="search-button">Поиск</button>
             </div>
-        </div>
     </section>
     <hr class="divider">
     <section class="location-cards">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        <button id="prevBut" class="arrow--left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <button id="nextBut" class="arrow--right">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <div class="swiper " id="swiper1">
+            <div class="swiper-wrapper">
 
-        <article class="location-card">
+        <article class="location-card swiper-slide">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
             <h3 class="location-address">Адрес</h3>
             <p class="location-description">
@@ -54,16 +63,43 @@
             <p class="location-metro">Местоположение относительно метро/центра</p>
         </article>
 
-        <article class="featured-location-card">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ae4b37f588bb63ad441142d4d560b666101c043acf2d130e2d269c4f05e1b9c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Featured Location" class="featured-location-image" />
-            <h3 class="featured-location-address">Адрес</h3>
-            <p class="featured-location-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
-            </p>
-            <p class="featured-location-metro">Местоположение относительно метро/центра</p>
-        </article>
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ae4b37f588bb63ad441142d4d560b666101c043acf2d130e2d269c4f05e1b9c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
 
-        <article class="location-card">
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6384e2d347932129eaca838373aa0b7aa7470b2b3c5e456476c52c41ea417ef0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 2" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+        <article class="location-card swiper-slide">
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6384e2d347932129eaca838373aa0b7aa7470b2b3c5e456476c52c41ea417ef0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 2" class="location-image" />
             <h3 class="location-address">Адрес</h3>
             <p class="location-description">
@@ -71,10 +107,10 @@
             </p>
             <p class="location-metro">Местоположение относительно метро/центра</p>
         </article>
-
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+            </div>
+        </div>
     </section>
-    <hr class="divider">
+    <hr class="divider" style="margin-top: 40px">
     <div class="join-community-title">Присоединиться к сообществу <br /> путешественников</div>
     <div class="about-community">
         <div class="content-wrapper">
@@ -113,8 +149,15 @@
     </div>
     <hr class="divider">
     <section class="testimonial-container">
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="quote-icon" />
-        <div class="testimonial-content">
+        <button id="prevBut2" class="arrow--left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <button id="nextBut2" class="arrow--right">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <div class="swiper " id="swiper2">
+            <div class="swiper-wrapper">
+        <div class="testimonial-content swiper-slide">
             <div class="testimonial-layout">
                 <div class="testimonial-image-column">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/44ba2da445fe40731b498804428d256bfcf052a12df96e2784e87c45f89e164c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Testimonial" class="testimonial-image" />
@@ -133,7 +176,27 @@
                 </div>
             </div>
         </div>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="quote-icon" />
+                <div class="testimonial-content swiper-slide">
+                    <div class="testimonial-layout">
+                        <div class="testimonial-image-column">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/44ba2da445fe40731b498804428d256bfcf052a12df96e2784e87c45f89e164c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Testimonial" class="testimonial-image" />
+                        </div>
+                        <div class="testimonial-text-column">
+                            <div class="testimonial-text-content">
+                                <h3 class="testimonial-name">ФИО2</h3>
+                                <blockquote class="testimonial-quote">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus semper tincidunt. Mauris maximus elementum ullamcorper. Praesent at nibh euismе
+                                    <span class="quote-highlight">"Текст отзыва"</span>
+                                    et, dignissim nisi. Nulla in efficitur nisi. Ut quis mauris quis eros euismod malesuada. Maecenas hendrerit ac sapien ac pharetra.
+                                    <br /><br />
+                                    Phasellus sollicitudin elementum ipsum ac porttitor. Morbi tempus felis magna, dictum dignissim ante finibus non. Cras pellentesque.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <hr class="divider">
     <section class="questions-container">
@@ -211,5 +274,7 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="swiper.js"></script>
 </body>
 </html>
