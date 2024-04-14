@@ -12,14 +12,21 @@ from sqlalchemy.orm import sessionmaker
 class Database:
     def __init__(self, db_url: str):
         self.db_url = db_url
-        self.__engine = None
+        self.__engine = create_async_engine(self.db_url)
 
     async def create_object(self, model, **attributes):
+        # await self.connect()
         async with AsyncSession(self.__engine, expire_on_commit=False) as session:
             object = model(**attributes)
             session.add(object)
             await session.commit()
             return object
+
+    async def create_objects(self, model_s: []):
+        async with AsyncSession(self.__engine, expire_on_commit=True) as session:
+            session.add_all(model_s)
+            await session.commit()
+
 
     async def sql_query(self, query, single=True, is_update=False, *args, **kwargs):
         async with AsyncSession(self.__engine) as session:
@@ -33,7 +40,6 @@ class Database:
         async_session_maker = sessionmaker(self.__engine, class_=AsyncSession, expire_on_commit=False)
         async with async_session_maker() as session:
             yield session
-
 
     async def connect(self):
         self.__engine = create_async_engine(self.db_url)

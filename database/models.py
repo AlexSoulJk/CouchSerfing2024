@@ -42,6 +42,10 @@ class Room(Base):
     date_deleted = Column(Date, nullable=True)
 
     description = Column(String(3000))
+    price = Column(Integer)
+    location = Column(String(100))
+
+
 
 
 class Rule(Base):
