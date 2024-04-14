@@ -14,3 +14,5 @@ async def create_room(user_id: int,
                       pictures: list[PictureCreate]):
     return await crud.create_room(room_in=room, user_id=user_id,
                                   pictures=pictures, rules=rules)
+
+
