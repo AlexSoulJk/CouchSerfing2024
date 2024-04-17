@@ -36,6 +36,12 @@ class Database:
             await session.commit()
             return result
 
+    async def delete(self, query):
+        async with AsyncSession(self.__engine) as session:
+            result = await session.execute(query)
+            await session.commit()
+            return result
+
     async def get_async_session(self) -> AsyncGenerator[AsyncSession, None]:
         async_session_maker = sessionmaker(self.__engine, class_=AsyncSession, expire_on_commit=False)
         async with async_session_maker() as session:
