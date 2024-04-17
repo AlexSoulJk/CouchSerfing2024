@@ -9,6 +9,8 @@ class PictureBase(BaseModel):
 class PictureCreate(PictureBase):
     pass
 
+class PictureUpdate(BaseModel):
+    id: int
 
 class Picture(PictureBase):
     id: int

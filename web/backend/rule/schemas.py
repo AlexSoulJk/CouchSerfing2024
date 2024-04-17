@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class Rule(BaseModel):
@@ -6,4 +6,10 @@ class Rule(BaseModel):
 
 
 class RuleCreate(BaseModel):
+    rule_id: int
+
+
+class RuleGet(Rule):
     id: int
+    url_pic: str
+    model_config = ConfigDict(from_attributes=True)
