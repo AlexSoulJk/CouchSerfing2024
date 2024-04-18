@@ -1,7 +1,7 @@
 from datetime import datetime
 from fastapi import Depends
 from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
-from sqlalchemy import Column, String, Boolean, TIMESTAMP
+from sqlalchemy import Column, Integer, String, Boolean, TIMESTAMP
 from sqlalchemy.ext.asyncio import AsyncSession
 from database.models import Base
 from database.db import db

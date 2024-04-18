@@ -1,9 +1,12 @@
+import os
+from dotenv import load_dotenv
 from fastapi_users.authentication import CookieTransport, AuthenticationBackend
 from fastapi_users.authentication import JWTStrategy
 
 cookie_transport = CookieTransport(cookie_name="bonds", cookie_max_age=3600)
 
-SECRET = "SECRET"
+load_dotenv()
+SECRET = os.getenv("db_url")
 
 
 def get_jwt_strategy() -> JWTStrategy:
