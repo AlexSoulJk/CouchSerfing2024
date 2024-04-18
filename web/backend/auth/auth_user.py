@@ -8,10 +8,10 @@ from database.db import db
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
-    email = Column(String(60), nullable=False)
-    nickname = Column(String, nullable=False)
+    email: str = Column(String(60), nullable=False)
+    nickname: str = Column(String, nullable=False)
     date_created = Column(TIMESTAMP, default=datetime.utcnow)
-    telegram_tag = Column(String(60), nullable=True)
+    telegram_tag: str = Column(String(60), nullable=True)
     hashed_password: str = Column(String(length=1024), nullable=False)
     is_active: bool = Column(Boolean, default=True, nullable=False)
     is_superuser: bool = Column(Boolean, default=False, nullable=False)
