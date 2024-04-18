@@ -11,3 +11,12 @@ function handleSelectColorChange(selectElement) {
         selectElement.style.color = '#333';
     }
 }
+
+document.querySelector('.menu-button').addEventListener('click', function() {
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    if (dropdownMenu.style.display === 'none') {
+        dropdownMenu.style.display = 'block';
+    } else {
+        dropdownMenu.style.display = 'none';
+    }
+});

@@ -14,24 +14,27 @@
 <div class='header'>
     <div class="container">
         <div class="header-line">
-            <div class = 'heder-logo'>
-                <img src="logo.png" alt="">
-            </div>
 
             <div class="nav">
-                <a class="nav-item" href="@">О нас</a>
-                <a class="nav-item" href="@">Каталог</a>
-                <a class="nav-item-yellow" href="@">Поиск объявлений</a>
-
-
+                <img class="nav-item " src="logo.png" alt="">
+                <a class="nav-item nav-item-double" href="@">О нас</a>
+                <a class="nav-item nav-item-double" href="@">Каталог</a>
+                <a class="nav-item nav-item-yellow" href="@">Поиск объявлений</a>
+         
+                    <img class="nav-item-double" src="ring.png" alt="">
+                    <a class = "nav-item notion-item nav-item-double" href="@">Уведомления</a>
+                    <div class="nav-item menu-container">
+                        <img src="menubutton.png" alt="Меню" class="menu-button">
+                        <ul class="dropdown-menu">
+                            <li><a href="@">Главная</a></li>
+                            <li><a href="@">О нас</a></li>
+                            <li><a href="@">Поиск объявлений</a></li>
+                            <li><a href="@">Уведомления</a></li>
+                        </ul>
+                    </div> 
+                      
             </div>
-            <div class="notion">
-                <img src="ring.png" alt="">
-                <a class = "notion-item" href="@">Уведомления</a>
-            </div>
-            <div class="menu-button">
-                <img src="menubutton.png" alt="">
-            </div>
+           
 
         </div>
     </div>
@@ -54,16 +57,16 @@
                     </div>
                     <div class="person-information-block">
                         <form action="">
-                            <label for="name">Имя пользователя</label>
+                            <label for="name">Имя пользователя<br></label>
                             <input type="text" id="login" placeholder="Текст">
 
-                            <label for="email">Почта</label>
+                            <label for="email">Почта<br></label>
                             <input type="email" id="email" placeholder="Текст">
 
-                            <label for="password">Пароль</label>
+                            <label for="password">Пароль<br></label>
                             <input type="password" id="password" placeholder="********">
 
-                            <label for="repeat password">Повторите пароль</label>
+                            <label for="repeat password">Повторите пароль<br></label>
                             <input type="password" id="repeat password" placeholder="********">
                         </form>
                     </div>
@@ -97,7 +100,7 @@
                             <input type="text" id="social-network" placeholder="Текст">
                         </form>
                     </div>
-                    <div class="additional-information-photo-block">
+                    <div class="person-information-photo-block">
                         <img src="chid.png" alt="">
                     </div>
                 </div>
@@ -105,7 +108,7 @@
                     <a class="person-information-title-text">Интересы</a>
                 </div>
                 <div class="person-information-container">
-                    <div>
+                    <div class="person-information-photo-block">
                         <img src="woman.png" alt="">
                     </div>
                     <div class="person-information-block">
@@ -113,6 +116,10 @@
                             <label for="interest">Чем Вы занимаетесь?</label>
                             <select onchange="handleSelectColorChange(this);" name="interest" id="interest">
                                 <option value="" disabled selected>Выбор элемента и “другое”</option>
+                                <option value="worker">Работаю</option>
+                                <option value="student">Студент</option>
+                                <option value="school">Школьник</option>
+                                <option value="traveler">Путешественник</option>
                                 <option value="other">Другое</option>
 
                             </select>
@@ -160,13 +167,13 @@
                     <label for="share-person-information-checkbox" class="checkbox-label">Я даю согласие на обработку моих персональных данных</label>
                 </div>
                 <div>
-                    <button class="submit-button" type="submit" name="submit-button">Зарегистрироваться</button>
+                    <button class="submit-button"  name="submit-button" href="@">Зарегистрироваться</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer">
-        <div class = 'footer-logo'>
+        <div class = "footer-logo">
             <img src="logo2.png" alt="">
         </div>
         <div class="menu-text">
