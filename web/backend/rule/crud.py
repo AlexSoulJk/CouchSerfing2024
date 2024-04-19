@@ -38,3 +38,8 @@ async def get_rules_in_room(room_id: int):
 
 async def get_all_rules():
     return await db.sql_query(query=select(Rule))
+
+
+async def get_rules_not_in_room(room_id: int):
+    return await db.sql_query(query=select(Rule).join(
+        RoomRule, Rule.id != RoomRule.rule_id).where(RoomRule.room_id == room_id))
