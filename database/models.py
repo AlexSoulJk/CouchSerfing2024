@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP
 from sqlalchemy.orm import DeclarativeBase, declared_attr
-
+from fastapi_users.db import SQLAlchemyBaseUserTable
 
 class Base(AsyncAttrs, DeclarativeBase):
     __abstract__ = True
@@ -16,26 +16,38 @@ class Base(AsyncAttrs, DeclarativeBase):
     id = Column(Integer, primary_key=True)
 
 
-class User(Base):
-    nickname = Column(String(100), nullable=False, unique=True)
+# class User(Base):
+#     nickname = Column(String(100), nullable=False, unique=True)
+#
+#     date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
+#     date_deleted = Column(Date, nullable=True)
+#
+#     login = Column(String(100), nullable=False)
+#
+#     hashed_password = Column(String(length=1024), nullable=False)
+#
+#     is_active: bool = Column(Boolean, default=True, nullable=False)
+#     is_superuser: bool = Column(Boolean, default=False, nullable=False)
+#     is_verified: bool = Column(Boolean, default=False, nullable=False)
+#
+#     email = Column(String(60), nullable=False)
+#     telegram_tag = Column(String(60), nullable=True
 
-    date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
-    date_deleted = Column(Date, nullable=True)
-
-    login = Column(String(100), nullable=False)
-
-    hashed_password = Column(String(length=1024), nullable=False)
-
+class User(SQLAlchemyBaseUserTable[int], Base):
+    __tablename__ = "user"
+    email = Column(String(60), nullable=False)
+    nickname = Column(String, nullable=False)
+    date_created = Column(TIMESTAMP, default=datetime.utcnow)
+    telegram_tag = Column(String(60), nullable=True)
+    hashed_password: str = Column(String(length=1024), nullable=False)
     is_active: bool = Column(Boolean, default=True, nullable=False)
     is_superuser: bool = Column(Boolean, default=False, nullable=False)
     is_verified: bool = Column(Boolean, default=False, nullable=False)
-
-    email = Column(String(60), nullable=False)
-    telegram_tag = Column(String(60), nullable=True)
+    date_deleted = Column(Date, nullable=True)
 
 
 class Room(Base):
-    user_id = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("user.id"))
 
     date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_disabled = Column(Date, nullable=True)
@@ -68,7 +80,7 @@ class RoomPicture(Base):
 
 
 class Notification(Base):
-    user_id = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("user.id"))
 
     date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
     date_deleted = Column(Date, nullable=True)
@@ -77,7 +89,7 @@ class Notification(Base):
 
 
 class Favorite(Base):
-    user_id = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("user.id"))
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
     date_created = Column(Date, nullable=False)
@@ -85,8 +97,8 @@ class Favorite(Base):
 
 
 class Deal(Base):
-    owner_id = Column(Integer, ForeignKey("users.id"))
-    guest_id = Column(Integer, ForeignKey("users.id"))
+    owner_id = Column(Integer, ForeignKey("user.id"))
+    guest_id = Column(Integer, ForeignKey("user.id"))
     room_id = Column(Integer, ForeignKey("rooms.id"))
 
     date_created = Column(TIMESTAMP, nullable=False, default=datetime.utcnow)
