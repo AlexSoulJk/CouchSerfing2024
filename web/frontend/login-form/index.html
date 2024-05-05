@@ -7,19 +7,21 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="login">
 <div id="login-container" class="login-container">
   <h2>Авторизация</h2>
   <form id="login-form">
     <div class="form-group">
-      <label for="username">Имя пользователя:</label>
-      <input type="text" id="username" name="username" required>
+      <label for="username-login" class="personal-form-label">Email:</label>
+      <input type="text" id="username-login" name="username" class="personal-form-input-login filled" placeholder="Ваша почта" required>
     </div>
     <div class="form-group">
-      <label for="password">Пароль:</label>
-      <input type="password" id="password" name="password" required>
+      <label for="password-login" class="personal-form-label">Пароль:</label>
+      <input type="password" id="password-login" name="password" class="personal-form-input-login" placeholder="Пароль" required>
     </div>
-    <button type="submit">Войти</button>
+    <button type="submit" class="center-button">Войти</button>
   </form>
+</div>
 </div>
 
 <script src="script.js"></script>

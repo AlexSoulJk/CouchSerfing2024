@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Апартамент</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <a class="header-logo" href="/">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Couch Surfing" loading="lazy" />
+        </a>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link" style="width: 59px">О нас</a>
+            <a href="#" class="nav-link">Каталог</a>
+            <button class="header-search-button">Поиск объявлений</button>
+        </nav>
+        <div class="notification-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
+            <a href="#" class="notification-text">Уведомления</a>
+        </div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image-header" id="profile-image" />
+    </div>
+</header>
+
+<nav class="personal-cabinet" id="profile-menu" style="display: none;">
+    <a href="#" class="cabinet-item">Личный кабинет</a>
+    <a href="#" class="cabinet-item">Бронирования</a>
+    <a href="#" class="cabinet-item">Сдать жильё</a>
+    <a href="#" class="cabinet-item">Избранное</a>
+    <a href="#" class="cabinet-item">Уведомления</a>
+    <a href="#" class="cabinet-item">Навигация по сайту</a>
+    <div class="user-actions">
+        <a href="#" class="help-link">HELP</a>
+        <a href="#" class="logout-link">LOG OUT</a>
+    </div>
+</nav>
+
+<div class="travel-russia">
+    <section class="apartment-details">
+        <h1 class="apartment-name">Апартаменты BombFlat На Гривцова</h1>
+        <div class="apartment-info">
+            <div class="rating-container">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d4412ded117922c9617537d2130175761a0d680e6bcadfe245ac4383923f7f37?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="star-icon" />
+                <span class="rating-value">9.6</span>
+            </div>
+            <div class="apartment-details-container">
+                <p class="reviews-count">420 отзывов</p>
+                <p class="apartment-address">Гривцова переулок, 24</p>
+                <a href="#" class="map-link">Показать на карте</a>
+            </div>
+        </div>
+        <button id="prevBut" class="arrow--left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f87bb95c7c8df2bf25256ae8d2664cb5ccdca990a5fe1c4808d72ecaba2bef17?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <button id="nextBut" class="arrow--right">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/362551d8d154a97d29171498a97b408d78adad323f819b1d396da43271664ccb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <div class="swiper" id="swiper-big">
+            <div class="swiper-wrapper">
+                <article class="swiper-slide" data-index-big="0">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4880cacac9c6060c6d35acc949da8977e15dcaa3acbb68126f68c97058b0bb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Main" class="main-image" />
+                </article>
+                <article class="swiper-slide" data-index-big="1">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a3da1dd6d7a3ba287e7ec54519217631e6ac973b1b3aef555a2c2b61b82fc828?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="image 1" class="main-image" />
+                </article>
+                <article class="swiper-slide" data-index-big="2">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e6522a00e14e396ecd36bb7362cb45065584aa481ee91511e3ddccdbd31895d?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="image 2" class="main-image" />
+                </article>
+                <article class="swiper-slide" data-index-big="3">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d66dc2b844f5668fe0db16e8ad959170f0e2c9161360ea186430edc3d8499c10?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="image 3" class="main-image" />
+                </article>
+                <article class="swiper-slide" data-index-big="4">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/185826c6359a621b6ea3040f6af32683df3e47a98e8268b436dbc55178cf1c16?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="image 4" class="main-image" />
+                </article>
+                <article class="swiper-slide" data-index-big="5">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/68450ebac250de44e6934f652d13dd061f1d3e868b04a7533bcf15d7ab5095e1?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="image 5" class="main-image" />
+                </article>
+            </div>
+        </div>
+<!--        <div class="image-navigation">-->
+<!--            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f87bb95c7c8df2bf25256ae8d2664cb5ccdca990a5fe1c4808d72ecaba2bef17?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />-->
+<!--            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4880cacac9c6060c6d35acc949da8977e15dcaa3acbb68126f68c97058b0bb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Main apartment image" class="main-image" />-->
+<!--            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/362551d8d154a97d29171498a97b408d78adad323f819b1d396da43271664ccb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />-->
+<!--        </div>-->
+        <div class="image-gallery">
+        <div class="swiper" id="swiper-small">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-index="0">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4880cacac9c6060c6d35acc949da8977e15dcaa3acbb68126f68c97058b0bb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 6" class="gallery-image" />
+                </div>
+                <div class="swiper-slide" data-index="1">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a3da1dd6d7a3ba287e7ec54519217631e6ac973b1b3aef555a2c2b61b82fc828?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 1" class="gallery-image" />
+                </div>
+                <div class="swiper-slide" data-index="2">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9e6522a00e14e396ecd36bb7362cb45065584aa481ee91511e3ddccdbd31895d?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 2" class="gallery-image" />
+                </div>
+                <div class="swiper-slide" data-index="3">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d66dc2b844f5668fe0db16e8ad959170f0e2c9161360ea186430edc3d8499c10?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 3" class="gallery-image" />
+                </div>
+                <div class="swiper-slide" data-index="4">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/185826c6359a621b6ea3040f6af32683df3e47a98e8268b436dbc55178cf1c16?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 4" class="gallery-image" />
+                </div>
+                <div class="swiper-slide" data-index="5">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/68450ebac250de44e6934f652d13dd061f1d3e868b04a7533bcf15d7ab5095e1?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Apartment gallery image 5" class="gallery-image" />
+                </div>
+            </div>
+        </div>
+        </div>
+<!--        <div class="separator"></div>-->
+    </section>
+    <div class="divider"></div>
+    <section class="studio-container">
+        <h2 class="studio-title">Трёхместная Студия</h2>
+        <div class="studio-details">
+            <div class="studio-guests">3 гостя</div>
+            <div class="studio-bed">1 кровать</div>
+            <div class="studio-kitchen">Кухонная зона</div>
+            <div class="studio-floor">этаж 5 из 5</div>
+        </div>
+        <p class="studio-description">
+            Атмосферная студия с большими окнами с комфортом разместит двух человек, для третьего гостя мы предоставим евро-раскладушку Икеа. Удобство и функциональность внутреннего
+            <span id="expandText" style="display: none;">пространства делает это место идеальным выбором для отдыха и работы.</span>
+        </p>
+        <p id="expandButton" class="expand-btn" onclick="expandText()">...ещё</p>
+        <h3 class="studio-sleeping-places">Спальные места: 2</h3>
+        <div class="studio-bed-size">1 кровать king-size</div>
+    </section>
+    <div class="divider"></div>
+    <section class="rules-container">
+        <h2 class="rules-title">Правила проживания</h2>
+        <div class="check-in-out-container">
+            <div class="check-in-container">
+                <h3 class="check-in-title">Заезд</h3>
+                <p class="check-in-time">после 14:00</p>
+            </div>
+            <div class="check-out-container">
+                <h3 class="check-out-title">Отъезд</h3>
+                <p class="check-out-time">до 12:00</p>
+            </div>
+        </div>
+        <div class="children-allowed-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f5ede084dfba9a020d6756dfd1101c78389c48dc1cff6d67a475b6cc63ea3275?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Children allowed icon" class="icon" />
+            <p class="children-allowed-text">можно с детьми любого возраста</p>
+        </div>
+        <div class="smoking-allowed-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8144a335264a560b492179ed69dd7a9b0fe8bdf77a0cb6585f172e103acd260?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Smoking allowed icon" class="icon icon-smoking" />
+            <p class="smoking-allowed-text">курение разрешено в специально отведённых местах</p>
+        </div>
+        <div class="pets-allowed-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/31a689ab48e0c90d1bd4fce63eb0122907e36a290c63d578a4cbef216936f343?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Pets allowed icon" class="icon icon-pets" />
+            <p class="pets-allowed-text">можно с питомцами по согласованию с хозяином жилья</p>
+        </div>
+        <div class="documents-provided-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c863a9a6f395e7e161bcf9bf77000ab2eb1432d68005343c52b10baeefdc19b5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Documents provided icon" class="icon icon-documents" />
+            <p class="documents-provided-text">
+                владелец предоставляет отчётные документы о проживании по согласию
+            </p>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="amenities-container">
+        <div class="amenities-wrapper">
+            <div class="amenities-column">
+                <div class="amenities-content">
+                    <h2 class="amenities-title">Основные удобства</h2>
+                    <ul class="amenities-list">
+                        <li class="amenity-item">
+                            <span class="amenity-icon" aria-hidden="true"></span>
+                            <span class="amenity-text">беспроводной интернет Wi-Fi</span>
+                        </li>
+                        <li class="amenity-item">
+                            <span class="amenity-icon" aria-hidden="true"></span>
+                            <span class="amenity-text">фен</span>
+                        </li>
+                        <li class="amenity-item">
+                            <span class="amenity-icon" aria-hidden="true"></span>
+                            <span class="amenity-text">дизайнерский ремонт</span>
+                        </li>
+                        <li class="amenity-item">
+                            <span class="amenity-icon" aria-hidden="true"></span>
+                            <span class="amenity-text">телевизор</span>
+                        </li>
+                        <li class="amenity-item">
+                            <span class="amenity-icon" aria-hidden="true"></span>
+                            <span class="amenity-text">электрический чайник</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="amenities-column-secondary">
+                <ul class="amenities-list-secondary">
+                    <li class="amenity-item">
+                        <span class="amenity-icon" aria-hidden="true"></span>
+                        <span class="amenity-text">полотенца</span>
+                    </li>
+                    <li class="amenity-item">
+                        <span class="amenity-icon" aria-hidden="true"></span>
+                        <span class="amenity-text">постельное бельё</span>
+                    </li>
+                    <li class="amenity-item">
+                        <span class="amenity-icon" aria-hidden="true"></span>
+                        <span class="amenity-text">кондиционер</span>
+                    </li>
+                    <li class="amenity-item">
+                        <span class="amenity-icon" aria-hidden="true"></span>
+                        <span class="amenity-text">микроволновка</span>
+                    </li>
+                    <li class="amenity-item">
+                        <span class="amenity-icon" aria-hidden="true"></span>
+                        <span class="amenity-text">кухонная утварь и посуда</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section class="guest-rating">
+        <header class="rating-header">
+            <h2 class="rating-title">Оценка гостей</h2>
+            <div class="rating-score">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca4374b15de9f9e2db7cd71c0352fbe3ea0907b85adca7674cc6ccd865464523?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Star icon" class="star-icon" />
+                <span class="score-value">9.6</span>
+            </div>
+            <a href="#" class="review-count">420 отзывов</a>
+        </header>
+        <div class="rating-details">
+            <div class="rating-categories">
+                <div class="price-quality-row">
+                <span class="expectation-label">Чистота</span>
+                    <div class="rating-bar-real">
+                        <div class="rating-fill-real"></div>
+                    </div>
+                <span class="expectation-value">9,6</span>
+                </div>
+                <div class="price-quality-row">
+                <span class="price-quality-label">Расположение</span>
+                    <div class="rating-bar-real">
+                        <div class="rating-fill-real"></div>
+                    </div>
+                <span class="expectation-value">9,9</span>
+                </div>
+            </div>
+            <div class="rating-bars">
+                <div class="price-quality-row">
+                <span class="expectation-label">Соответствие ожиданиям</span>
+                    <div class="rating-bar-real">
+                        <div class="rating-fill-real"></div>
+                    </div>
+                <span class="expectation-value">9,4</span>
+                </div>
+                <div class="price-quality-row">
+                <span class="price-quality-label">Цена - качество</span>
+                    <div class="rating-bar-real">
+                        <div class="rating-fill-real"></div>
+                    </div>
+                <span class="expectation-value">9,8</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <div class="profile-card">
+        <div class="profile-card__content">
+            <div class="profile-card__info">
+                <div class="profile-card__header">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c3c560801b73be21e430d2f4d4417690ec43ac23094905970b68385525057d1a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile picture of Александр" class="profile-card__avatar" />
+                    <div class="profile-card__name">Александр</div>
+                </div>
+                <div class="profile-card__languages">Общается на языках: Русский, Английский</div>
+            </div>
+            <div class="profile-card__actions">
+                <button class="profile-card__contact-button">Связаться</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-columns">
+            <div class="footer-main-column">
+                <div class="footer-main-content">
+                    <div class="footer-main-columns">
+                        <div class="footer-logo-column">
+                            <a href="/">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Logo" class="footer-logo" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="footer-menu-column">
+                            <nav class="footer-menu">
+                                <h3 class="footer-menu-title">Меню</h3>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                        <div class="footer-services-column">
+                            <nav class="footer-services">
+                                <h3 class="footer-services-title">Услуги</h3>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info-column">
+                <div class="footer-info-columns">
+                    <div class="footer-info">
+                        <h3 class="footer-info-title">Информация</h3>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la</a>
+                    </div>
+                    <div class="footer-contacts">
+                        <h3 class="footer-contacts-title">Контакты</h3>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<script src="swiper.js"></script>
+</body>
+</html>

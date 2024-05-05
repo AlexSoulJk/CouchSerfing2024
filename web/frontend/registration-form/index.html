@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Форма регистрации</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../login-form/styles.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <a class="header-logo" href="/">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Couch Surfing" loading="lazy" />
+        </a>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link" style="width: 59px">О нас</a>
+            <a href="#" class="nav-link">Каталог</a>
+            <button class="header-search-button">Поиск объявлений</button>
+        </nav>
+        <div class="notification-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
+            <a href="#" class="notification-text">Уведомления</a>
+        </div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image-header" id="profile-image" />
+    </div>
+</header>
+
+<nav class="personal-cabinet" id="profile-menu" style="display: none;">
+    <a href="#" class="cabinet-item">Личный кабинет</a>
+    <a href="#" class="cabinet-item">Бронирования</a>
+    <a href="#" class="cabinet-item">Сдать жильё</a>
+    <a href="#" class="cabinet-item">Избранное</a>
+    <a href="#" class="cabinet-item">Уведомления</a>
+    <a href="#" class="cabinet-item">Навигация по сайту</a>
+    <div class="user-actions">
+        <a href="#" class="help-link">HELP</a>
+        <a href="#" class="login-link" onClick="showLogin()">LOG IN</a>
+    </div>
+</nav>
+
+<div id="login-modal" class="login">
+    <div id="login-container" class="login-container">
+        <h2>Авторизация</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username-login" class="personal-form-label">Email:</label>
+                <input type="text" id="username-login" name="username" class="personal-form-input-login filled" placeholder="Ваша почта" required>
+            </div>
+            <div class="form-group">
+                <label for="password-login" class="personal-form-label">Пароль:</label>
+                <input type="password" id="password-login" name="password" class="personal-form-input-login" placeholder="Пароль" required>
+            </div>
+            <button type="submit" id="submit-login" class="center-button">Войти</button>
+        </form>
+    </div>
+</div>
+
+<form class="travel-russia" id="registration-form">
+    <h1 class="travel-heading">ПУТЕШЕСТВУЙ ПО РОССИИ</h1>
+    <p class="travel-russia-subtitle-big">
+        Зарегистрируйся
+    </p>
+    <p class="travel-russia-subtitle">
+        И получи доступ ко всем возможностям <br /> сервиса
+    </p>
+
+    <h3 class="personal-data-title">Личные данные</h3>
+    <div class="personal-data-divider"></div>
+<!--    <form class="personal-data-form" id="registration-form">-->
+    <section class="personal-data">
+        <div class="personal-form-row">
+                <div class="personal-image-column">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/41545087574932a9ab394dbb3043a25fbf5d1c1ee1ecc78521413dd2fbffbdb0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="personal-image" />
+                </div>
+                <div class="personal-form-column">
+                    <div class="personal-form-group">
+                        <label for="email" class="personal-form-label">Email</label>
+                        <input type="email" id="email" name="email" class="personal-form-input filled" placeholder="Текст" required/>
+                    </div>
+                    <div class="personal-form-group">
+                        <label for="nickname" class="personal-form-label">Login</label>
+                        <input type="text" id="nickname" name="nickname" class="personal-form-input filled" placeholder="Текст" required/>
+                    </div>
+                    <div class="personal-form-group">
+                        <label for="password" class="personal-form-label">Password</label>
+                        <input type="password" id="password" name="password" class="personal-form-input" aria-label="Password" placeholder="Тайная информация" required>
+                    </div>
+                    <div class="personal-form-group">
+                        <label for="repeat-password" class="personal-form-label">Repeat Password</label>
+                        <input type="password" id="repeat-password" class="personal-form-input" aria-label="Repeat Password" placeholder="Никто не узнает">
+                    </div>
+                </div>
+            </div>
+    </section>
+<!--    </form>-->
+
+
+    <h3 class="personal-data-title">Расскажите о себе</h3>
+    <div class="personal-data-divider"></div>
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-form-row">
+                <div class="about-form-column">
+                    <div class="about-form-container">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" id="name" class="personal-form-input filled" placeholder="Текст" aria-label="Имя">
+
+                        <fieldset class="gender-container">
+                            <legend class="gender-label">Пол</legend>
+                            <div class="gender-options">
+                                <div class="male-option">
+<!--                                    <div class="radio-button"></div>-->
+                                    <label for="male" class="female-label">Муж.</label>
+                                    <input type="radio" name="gender" id="male">
+                                </div>
+                                <div class="female-option">
+<!--                                    <div class="radio-button"></div>-->
+                                    <label for="female" class="female-label">Жен.</label>
+                                    <input type="radio" name="gender" id="female">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="sociability-group">
+                            <span class="form-label">Оцените Вашу общительность</span>
+                            <div class="slider-container">
+                                <div class="range__slider">
+                                    <div class="range__slider-line" id="range-line"></div>
+                                </div>
+
+                                <div class="range__thumb" id="range-thumb">
+                                    <div class="range__value">
+                                        <span class="range__value-number" id="range-number">5</span>
+                                    </div>
+                                </div>
+
+                                <input type="range" class="range__input" id="range-input" min="0" max="10" value="5" step="1">
+                            </div>
+                        </div>
+                        <label for="telegram_tag" class="form-label">Ваша соц. сеть</label>
+                        <input type="text" id="telegram_tag" name="telegram_tag" class="personal-form-input filled" placeholder="Текст" aria-label="Соц. Сеть" required>
+
+                    </div>
+                </div>
+                <div class="image-column">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/058c7795ed0d08f732aaedecfd1de2b4d1eb74864e30f57d0d073e4b2462f151?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="profile-image">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <h3 class="personal-data-title">Интересы</h3>
+    <div class="personal-data-divider"></div>
+    <section class="personal-data">
+        <div class="personal-form-row">
+            <div class="personal-image-column-special">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/95668e9a84cfcd57934461c62baea52f162d8e415cca71856c786cc1ed877393?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="personal-image" />
+            </div>
+            <div class="personal-form-column">
+                <div class="personal-form-group">
+                    <label for="choice" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice" class="personal-form-input custom-input">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
+                        <option value="option1">Опция 1</option>
+                        <option value="option2">Опция 2</option>
+                        <option value="option3">Опция 3</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <input type="text" id="otherInput" class="personal-form-input filled" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+                <div class="personal-form-group">
+                    <label for="choice2" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice2" class="personal-form-input">
+                        <option value="option1">Опция 1</option>
+                        <option value="option2">Опция 2</option>
+                        <option value="option3">Опция 3</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <input type="text" id="otherInput2" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+                <div class="personal-form-group">
+                    <label for="choice3" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice3" class="personal-form-input">
+                        <option value="option1">Опция 1</option>
+                        <option value="option2">Опция 2</option>
+                        <option value="option3">Опция 3</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <input type="text" id="otherInput3" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+                <div class="personal-form-group">
+                    <label for="choice4" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice4" class="personal-form-input">
+                        <option value="option1">Опция 1</option>
+                        <option value="option2">Опция 2</option>
+                        <option value="option3">Опция 3</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <input type="text" id="otherInput4" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+                <div class="personal-form-group">
+                    <label for="choice5" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice5" class="personal-form-input">
+                        <option value="option1">Опция 1</option>
+                        <option value="option2">Опция 2</option>
+                        <option value="option3">Опция 3</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <input type="text" id="otherInput5" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+    <div class="form-content">
+        <label class="consent-checkbox">
+            <input type="checkbox" class="checkbox-icon" id="consent-checkbox" aria-label="Consent checkbox">
+            <span class="consent-text">Я даю согласие на обработку моих персональных данных</span>
+        </label>
+        <button type="submit" class="register-button">Зарегистрироваться</button>
+    </div>
+</form>
+<div id="error-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-columns">
+            <div class="footer-main-column">
+                <div class="footer-main-content">
+                    <div class="footer-main-columns">
+                        <div class="footer-logo-column">
+                            <a href="/">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Logo" class="footer-logo" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="footer-menu-column">
+                            <nav class="footer-menu">
+                                <h3 class="footer-menu-title">Меню</h3>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                        <div class="footer-services-column">
+                            <nav class="footer-services">
+                                <h3 class="footer-services-title">Услуги</h3>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info-column">
+                <div class="footer-info-columns">
+                    <div class="footer-info">
+                        <h3 class="footer-info-title">Информация</h3>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la</a>
+                    </div>
+                    <div class="footer-contacts">
+                        <h3 class="footer-contacts-title">Контакты</h3>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="../login-form/script.js"></script>
+</body>
+</html>
