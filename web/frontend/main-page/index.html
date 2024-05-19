@@ -16,7 +16,7 @@
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Couch Surfing" loading="lazy" />
         </a>
         <nav class="nav-menu">
-            <a href="#" class="nav-link" style="width: 59px">О нас</a>
+            <a href="#" class="nav-link" style="width: 59px" onclick="scrollToSection('join-community-section')">О нас</a>
             <a href="#" class="nav-link">Каталог</a>
             <button class="header-search-button">Поиск объявлений</button>
         </nav>
@@ -24,9 +24,23 @@
             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
             <a href="#" class="notification-text">Уведомления</a>
         </div>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image" />
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image-header" id="profile-image" />
     </div>
 </header>
+
+<nav class="personal-cabinet" id="profile-menu" style="display: none;">
+    <a href="#" class="cabinet-item">Личный кабинет</a>
+    <a href="#" class="cabinet-item">Бронирования</a>
+    <a href="#" class="cabinet-item">Сдать жильё</a>
+    <a href="#" class="cabinet-item">Избранное</a>
+    <a href="#" class="cabinet-item">Уведомления</a>
+    <a href="#" class="cabinet-item">Навигация по сайту</a>
+    <div class="user-actions">
+        <a href="#" class="help-link">HELP</a>
+        <a href="#" class="logout-link">LOG OUT</a>
+    </div>
+</nav>
+
 <div class="travel-russia">
     <h1 class="travel-heading">ПУТЕШЕСТВУЙ ПО РОССИИ</h1>
     <p class="travel-russia-subtitle-big">
@@ -63,11 +77,11 @@
             <p class="location-metro">Местоположение относительно метро/центра</p>
         </article>
 
-                <article class="location-card swiper-slide">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ae4b37f588bb63ad441142d4d560b666101c043acf2d130e2d269c4f05e1b9c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
-                    <h3 class="location-address">Адрес</h3>
+                <article class="location-card swiper-slide" onclick="redirectToPage('/CouchSerfing2024/web/frontend/apartment-page/index.html')">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4880cacac9c6060c6d35acc949da8977e15dcaa3acbb68126f68c97058b0bb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Гривцова переулок, 24</h3>
                     <p class="location-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                        Апартаменты BombFlat На Гривцова
                     </p>
                     <p class="location-metro">Местоположение относительно метро/центра</p>
                 </article>
@@ -91,7 +105,7 @@
                 </article>
 
                 <article class="location-card swiper-slide">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ae4b37f588bb63ad441142d4d560b666101c043acf2d130e2d269c4f05e1b9c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
                     <h3 class="location-address">Адрес</h3>
                     <p class="location-description">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
@@ -110,7 +124,7 @@
             </div>
         </div>
     </section>
-    <hr class="divider" style="margin-top: 40px">
+    <hr id="join-community-section" class="divider" style="margin-top: 40px">
     <div class="join-community-title">Присоединиться к сообществу <br /> путешественников</div>
     <div class="about-community">
         <div class="content-wrapper">
@@ -142,7 +156,7 @@
             <div class="image-column">
                 <div class="image-wrapper">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b52f90d29ec084b21f9659cb965829f2fb6bef060def7847107651cf3c6938?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="image" />
-                    <button class="register-button">Зарегистрироваться</button>
+                    <button class="register-button" onclick="redirectToPage('/CouchSerfing2024/web/frontend/registration-form/index.html')">Зарегистрироваться</button>
                 </div>
             </div>
         </div>
