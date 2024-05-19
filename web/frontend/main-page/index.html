@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Couch Surfing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <a class="header-logo" href="/">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Couch Surfing" loading="lazy" />
+        </a>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link" style="width: 59px" onclick="scrollToSection('join-community-section')">О нас</a>
+            <a href="#" class="nav-link">Каталог</a>
+            <button class="header-search-button">Поиск объявлений</button>
+        </nav>
+        <div class="notification-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
+            <a href="#" class="notification-text">Уведомления</a>
+        </div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image-header" id="profile-image" />
+    </div>
+</header>
+
+<nav class="personal-cabinet" id="profile-menu" style="display: none;">
+    <a href="#" class="cabinet-item">Личный кабинет</a>
+    <a href="#" class="cabinet-item">Бронирования</a>
+    <a href="#" class="cabinet-item">Сдать жильё</a>
+    <a href="#" class="cabinet-item">Избранное</a>
+    <a href="#" class="cabinet-item">Уведомления</a>
+    <a href="#" class="cabinet-item">Навигация по сайту</a>
+    <div class="user-actions">
+        <a href="#" class="help-link">HELP</a>
+        <a href="#" class="logout-link">LOG OUT</a>
+    </div>
+</nav>
+
+<div class="travel-russia">
+    <h1 class="travel-heading">ПУТЕШЕСТВУЙ ПО РОССИИ</h1>
+    <p class="travel-russia-subtitle-big">
+        Находи свои места
+    </p>
+    <p class="travel-russia-subtitle">
+        И присоединяйся к нашему <br /> сообществу
+    </p>
+    <section class="search-bar">
+        <input type="text" class="search-container" placeholder="Начни поиск прямо сейчас">
+            <img src="../search-icon.png" alt="" class="search-icon" />
+            <div class="search-button-container">
+                <div class="search-divider"></div>
+                <button class="search-button">Поиск</button>
+            </div>
+    </section>
+    <hr class="divider">
+    <section class="location-cards">
+        <button id="prevBut" class="arrow--left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <button id="nextBut" class="arrow--right">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <div class="swiper " id="swiper1">
+            <div class="swiper-wrapper">
+
+        <article class="location-card swiper-slide">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+            <h3 class="location-address">Адрес</h3>
+            <p class="location-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+            </p>
+            <p class="location-metro">Местоположение относительно метро/центра</p>
+        </article>
+
+                <article class="location-card swiper-slide" onclick="redirectToPage('/CouchSerfing2024/web/frontend/apartment-page/index.html')">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4880cacac9c6060c6d35acc949da8977e15dcaa3acbb68126f68c97058b0bb?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Гривцова переулок, 24</h3>
+                    <p class="location-description">
+                        Апартаменты BombFlat На Гривцова
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6384e2d347932129eaca838373aa0b7aa7470b2b3c5e456476c52c41ea417ef0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 2" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/665fc066373f56f2c8b25757c6ccd78036ffe9489734b5805f986f87f3489a0a?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+                <article class="location-card swiper-slide">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ae4b37f588bb63ad441142d4d560b666101c043acf2d130e2d269c4f05e1b9c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 1" class="location-image" />
+                    <h3 class="location-address">Адрес</h3>
+                    <p class="location-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+                    </p>
+                    <p class="location-metro">Местоположение относительно метро/центра</p>
+                </article>
+
+        <article class="location-card swiper-slide">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6384e2d347932129eaca838373aa0b7aa7470b2b3c5e456476c52c41ea417ef0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Location 2" class="location-image" />
+            <h3 class="location-address">Адрес</h3>
+            <p class="location-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus.
+            </p>
+            <p class="location-metro">Местоположение относительно метро/центра</p>
+        </article>
+            </div>
+        </div>
+    </section>
+    <hr id="join-community-section" class="divider" style="margin-top: 40px">
+    <div class="join-community-title">Присоединиться к сообществу <br /> путешественников</div>
+    <div class="about-community">
+        <div class="content-wrapper">
+            <div class="text-column">
+                <div class="text-content">
+                    <p>
+          <span class="bold-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci.
+          </span>
+                        Nulla dapibus semper tincidunt. Mauris maximus elementum ullamcorper. Praesent at nibh euismod, maximus lectus et, dignissim nisi. Nulla in efficitur nisi. Ut quis mauris quis eros euismod malesuada. Maecenas hendrerit ac sapien ac pharetra.
+                    </p>
+                    <p>
+                        Phasellus sollicitudin elementum ipsum ac porttitor. Morbi tempus felis magna, dictum dignissim ante finibus non.
+                        <span class="bold-text">
+            Cras pellentesque metus nibh, in bibendum enim blandit sed.
+          </span>
+                        Praesent semper est nec mauris mattis ornare. Donec mollis hendrerit augue, gravida dictum quam lacinia at.
+                    </p>
+                    <p>
+                        Etiam eu erat lectus. Donec id odio risus. Mauris posuere egestas sem. Sed quam purus, volutpat et neque vitae, bibendum semper nunc. Quisque ac mollis nunc.
+                    </p>
+                    <p>
+          <span class="extra-bold-text">
+            Suspendisse ex neque, tristique nec faucibus sit amet, semper at velit. Suspendisse vestibulum blandit mollis.
+          </span>
+                    </p>
+                </div>
+            </div>
+            <div class="image-column">
+                <div class="image-wrapper">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b52f90d29ec084b21f9659cb965829f2fb6bef060def7847107651cf3c6938?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="image" />
+                    <button class="register-button" onclick="redirectToPage('/CouchSerfing2024/web/frontend/registration-form/index.html')">Зарегистрироваться</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="divider">
+    <section class="testimonial-container">
+        <button id="prevBut2" class="arrow--left">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e54c28a29bcf93296b2d9ed89f21924ded85e01f78b6d0522f3ae05ee213372?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <button id="nextBut2" class="arrow--right">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4c66e0f0fdfe41a5bd003a80af729867d0c6e125c7fbaaeb988a9474cc632df?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="arrow-icon" />
+        </button>
+        <div class="swiper " id="swiper2">
+            <div class="swiper-wrapper">
+        <div class="testimonial-content swiper-slide">
+            <div class="testimonial-layout">
+                <div class="testimonial-image-column">
+                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/44ba2da445fe40731b498804428d256bfcf052a12df96e2784e87c45f89e164c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Testimonial" class="testimonial-image" />
+                </div>
+                <div class="testimonial-text-column">
+                    <div class="testimonial-text-content">
+                        <h3 class="testimonial-name">ФИО</h3>
+                        <blockquote class="testimonial-quote">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus semper tincidunt. Mauris maximus elementum ullamcorper. Praesent at nibh euismе
+                            <span class="quote-highlight">"Текст отзыва"</span>
+                            et, dignissim nisi. Nulla in efficitur nisi. Ut quis mauris quis eros euismod malesuada. Maecenas hendrerit ac sapien ac pharetra.
+                            <br /><br />
+                            Phasellus sollicitudin elementum ipsum ac porttitor. Morbi tempus felis magna, dictum dignissim ante finibus non. Cras pellentesque.
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="testimonial-content swiper-slide">
+                    <div class="testimonial-layout">
+                        <div class="testimonial-image-column">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/44ba2da445fe40731b498804428d256bfcf052a12df96e2784e87c45f89e164c?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Testimonial" class="testimonial-image" />
+                        </div>
+                        <div class="testimonial-text-column">
+                            <div class="testimonial-text-content">
+                                <h3 class="testimonial-name">ФИО2</h3>
+                                <blockquote class="testimonial-quote">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a feugiat diam, vitae aliquam orci. Nulla dapibus semper tincidunt. Mauris maximus elementum ullamcorper. Praesent at nibh euismе
+                                    <span class="quote-highlight">"Текст отзыва"</span>
+                                    et, dignissim nisi. Nulla in efficitur nisi. Ut quis mauris quis eros euismod malesuada. Maecenas hendrerit ac sapien ac pharetra.
+                                    <br /><br />
+                                    Phasellus sollicitudin elementum ipsum ac porttitor. Morbi tempus felis magna, dictum dignissim ante finibus non. Cras pellentesque.
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="divider">
+    <section class="questions-container">
+        <div class="questions-wrapper">
+            <div class="questions-content">
+                <div class="questions-text">
+                    <h2 class="questions-heading">Остались вопросы?</h2>
+                    <p class="questions-subheading">
+                        Подписывайся на телеграмм канал проекта и следи за обновлениями!
+                    </p>
+                </div>
+            </div>
+            <div class="telegram-link">
+                <a href="#" class="telegram-link-container">
+                    <div class="qr-code" aria-hidden="true"></div>
+                    <span class="telegram-link-text">
+                        <span class="visually-hidden">Telegram link:</span>
+                    TG-LINK
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-columns">
+            <div class="footer-main-column">
+                <div class="footer-main-content">
+                    <div class="footer-main-columns">
+                        <div class="footer-logo-column">
+                            <a href="/">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Logo" class="footer-logo" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="footer-menu-column">
+                            <nav class="footer-menu">
+                                <h3 class="footer-menu-title">Меню</h3>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                        <div class="footer-services-column">
+                            <nav class="footer-services">
+                                <h3 class="footer-services-title">Услуги</h3>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info-column">
+                <div class="footer-info-columns">
+                    <div class="footer-info">
+                        <h3 class="footer-info-title">Информация</h3>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la</a>
+                    </div>
+                    <div class="footer-contacts">
+                        <h3 class="footer-contacts-title">Контакты</h3>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+<script src="swiper.js"></script>
+</body>
+</html>
