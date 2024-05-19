@@ -12,6 +12,7 @@ from web.backend.auth.schemas import UserRead, UserCreate
 
 app = FastAPI(title="couch_surfing")
 app.include_router(prefix="/main", router=primary_router)
+
 fastapi_users = FastAPIUsers[User, int](
     get_user_manager,
     [auth_backend],
@@ -27,6 +28,7 @@ app.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
     tags=["auth"],
+
 )
 
 origins = [
