@@ -7,7 +7,7 @@ from fastapi import Path, HTTPException, status
 
 router = APIRouter(tags=["Pictures"])
 
-
+# TODO: Добавить зависимость от авторизации пользователя.
 # TODO: Добавить нормальные исключения
 
 @router.post("/{room_id}/")

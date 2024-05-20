@@ -28,11 +28,14 @@ class Database:
             session.add_all(model_s)
             await session.commit()
 
-    async def sql_query(self, query, single=True, is_update=False, *args, **kwargs):
+    async def sql_query(self, query, single=True, is_scalars = True, is_update=False, *args, **kwargs):
         async with AsyncSession(self.__engine) as session:
             result = await session.execute(query)
             if not is_update:
-                return result.scalars().first() if single else result.scalars().all()
+                if is_scalars:
+                    return result.scalars().first() if single else result.scalars().all()
+                else:
+                    return result.first() if single else result.all()
             await session.commit()
             return result
 
@@ -70,7 +73,7 @@ class Database:
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 db = Database(os.getenv("db_url"))
-asyncio.run(db.setup())
+# asyncio.run(db.setup())
 
 # async def main():
 #     load_dotenv()

@@ -6,7 +6,7 @@ from ..room.schemas import RoomGet
 
 router = APIRouter(tags=["Rules"])
 
-
+# TODO: Добавить зависимость от авторизации пользователя.
 @router.post("/{room_id}/")
 async def create_rules_in_room(rules: list[RuleCreate],
                                room: RoomGet = Depends(get_room_by_id)):

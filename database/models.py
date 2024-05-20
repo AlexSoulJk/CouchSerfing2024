@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy.dialects.postgresql import JSON
+
 from sqlalchemy.ext.asyncio import AsyncAttrs
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP
@@ -66,6 +66,7 @@ class RoomPicture(Base):
     date_disabled = Column(Date, nullable=True)
 
     url_picture = Column(String(100), nullable=False)
+    is_front = Column(Boolean, nullable=True)
 
 
 class Notification(Base):

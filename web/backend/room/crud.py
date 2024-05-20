@@ -28,7 +28,7 @@ async def get_rooms(user_id: int, is_disabled: bool):
     return await db.sql_query(query=select(Room).where(
         Room.user_id == user_id).where(
         (Room.date_disabled != null(),
-         Room.date_disabled == null())[is_disabled]),
+         Room.date_disabled == null())[not is_disabled]),
         single=False)
 
 

@@ -41,7 +41,7 @@ async def delete_pictures_in_room_by_ids(pictures: list[PictureUpdate], room_id:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                       detail=f"In room {room_id} aren't found some picture to update")
 
-
+# TODO: Подумать над использованием флага is_single
 async def get_card_picture(room_id: int, is_single=True):
     picture = await db.sql_query(query=select(RoomPicture).where(
         RoomPicture.room_id == room_id).where(
