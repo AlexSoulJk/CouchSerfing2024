@@ -44,15 +44,13 @@ class Room(Base):
     location = Column(String(100))
 
 
-class QuestionRule(Base):
-    description_rule = Column(String(100), nullable=False)
-    description_interest = Column(String(100), nullable=False)
+class QuestionRoomRule(Base):
+    description = Column(String(100), nullable=False)
 
 
 class Rule(Base):
-    room_rule_id = Column(Integer, ForeignKey("questionrules.id"))
-    description_rule = Column(String(100), nullable=False)
-    description_interest = Column(String(100), nullable=False)
+    quest_id = Column(Integer, ForeignKey("questionroomrules.id"))
+    description = Column(String(100), nullable=False)
     url_pic = Column(String(100), nullable=False)
 
 
@@ -97,9 +95,18 @@ class Deal(Base):
     status = Column(Integer, nullable=False)
 
 
+class QuestionRule(Base):
+    description = Column(String(100), nullable=False)
+
+
+class AnswerRule(Base):
+    rule_id = Column(Integer, ForeignKey("rules.id"))
+    description = Column(String(100), nullable=False)
+
+
 class UserAnswerRule(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
-    answer_id = Column(Integer, ForeignKey("rules.id"))
+    answer_id = Column(Integer, ForeignKey("answerrules.id"))
 
 
 class QuestionOther(Base):
