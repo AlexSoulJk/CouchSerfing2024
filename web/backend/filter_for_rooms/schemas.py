@@ -11,3 +11,6 @@ class BaseFilter(BaseModel):
 class StartFilter(BaseFilter):
     location: str
     date_check_in: Optional[datetime] = None
+
+class MainFilter(StartFilter):
+    pass

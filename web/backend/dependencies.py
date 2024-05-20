@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Optional
 
 from fastapi import Path, HTTPException, status, Depends
 from sqlalchemy import select
@@ -26,4 +26,8 @@ async def current_user_check_token(user_id: Annotated[int, Path],
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not permitted to perform this action.",
         )
+    return user
+
+
+async def get_current_user_by_token(user=Depends(fastapi_users_.current_user())) -> Optional[UserRead]:
     return user
