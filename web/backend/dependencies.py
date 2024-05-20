@@ -1,11 +1,13 @@
 from typing import Annotated
 
-from fastapi import Path, HTTPException, status
+from fastapi import Path, HTTPException, status, Depends
 from sqlalchemy import select
 
 from database.db import db
 from database.models import Room
+from .auth.schemas import UserRead
 from .room.schemas import RoomGet
+from .auth.router import fastapi_users_
 
 
 async def get_room_by_id(room_id: Annotated[int, Path]) -> RoomGet:
@@ -15,3 +17,13 @@ async def get_room_by_id(room_id: Annotated[int, Path]) -> RoomGet:
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f"Room with id {room_id} not found")
+
+
+async def current_user_check_token(user_id: Annotated[int, Path],
+                                   user=Depends(fastapi_users_.current_user(active=True))) -> UserRead:
+    if user is None or user_id != user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not permitted to perform this action.",
+        )
+    return user
