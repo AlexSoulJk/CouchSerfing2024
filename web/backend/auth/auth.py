@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 from fastapi_users.authentication import CookieTransport, AuthenticationBackend
 from fastapi_users.authentication import JWTStrategy

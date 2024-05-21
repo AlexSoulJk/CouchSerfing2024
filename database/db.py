@@ -9,10 +9,11 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 
+
 class Database:
     def __init__(self, db_url: str):
         self.db_url = db_url
-        self.__engine = create_async_engine(self.db_url, echo=True)
+        self.__engine = create_async_engine(self.db_url)
 
     async def create_object(self, model, **attributes):
         # await self.connect()
@@ -27,12 +28,14 @@ class Database:
             session.add_all(model_s)
             await session.commit()
 
-
-    async def sql_query(self, query, single=True, is_update=False, *args, **kwargs):
+    async def sql_query(self, query, single=True, is_scalars = True, is_update=False, *args, **kwargs):
         async with AsyncSession(self.__engine) as session:
             result = await session.execute(query)
             if not is_update:
-                return result.scalars().first() if single else result.scalars().all()
+                if is_scalars:
+                    return result.scalars().first() if single else result.scalars().all()
+                else:
+                    return result.first() if single else result.all()
             await session.commit()
             return result
 
@@ -52,15 +55,25 @@ class Database:
         await self.sql_query(query=select(1))
         logging.info("Database has been connected")
 
+    async def check_and_initialize_data(self):
+
+        # добавьте здесь свой код для проверки и инициализации данных
+        pass
+
     async def disconnect(self):
         if self.__engine:
             await self.__engine.dispose()
         logging.info("Database has been disconnected")
 
+    async def setup(self):
+        await self.connect()
+        await self.check_and_initialize_data()
+
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 db = Database(os.getenv("db_url"))
+# asyncio.run(db.setup())
 
 # async def main():
 #     load_dotenv()
