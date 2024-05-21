@@ -7,7 +7,13 @@ from database.models import UserAnswerRule, Room, RoomRule, RoomPicture
 from web.backend.auth.schemas import UserRead
 from web.backend.filter_for_rooms.schemas import StartFilter, MainFilter, CardSchema, RoomSchema, Picture
 
-
+# TODO: Протестить stm1 & stm2
+# Для stm1 необходимо добавить в базу:
+# 2-ух пользователей, с одного добавляешь комнаты, с другого их ищешь.(через swagger)
+# Для одного пользователя добавить ответы на вопросы(Пока что руками в бд)
+# Добавить картинку и правила для комнаты.
+# Для stm2 необходимо:
+# Просто проверить работоспособность на неавторизованном пользователе
 async def get_start_list_for_user(user: Optional[UserRead],
                                   start_filter: StartFilter):
     subquery = select(RoomPicture.url_picture).where(
@@ -19,6 +25,7 @@ async def get_start_list_for_user(user: Optional[UserRead],
         stmt = select(UserAnswerRule.answer_id).where(UserAnswerRule.user_id == user.id)
         answers_id = await db.sql_query(stmt, single=False)
         if len(answers_id) != 0:
+            # Пользователь авторизован + есть анкета интересов. stm1
             stmt = (
                 select(Room, subquery.label('picture_url'))
                 .join(RoomRule, Room.id == RoomRule.room_id)
@@ -40,7 +47,7 @@ async def get_start_list_for_user(user: Optional[UserRead],
                 .order_by(Room.price)
             )
     else:
-        # Если пользователь не авторизован, возвращаем все активные комнаты.
+        # Если пользователь не авторизован, возвращаем все активные комнаты. stm2
         stmt = (select(Room, subquery.label('picture_url'))
                 .where(Room.location == start_filter.location)
                 .where(Room.date_disabled == null())

@@ -12,8 +12,11 @@ class StartFilter(BaseFilter):
     location: str
     date_check_in: Optional[datetime] = None
 
-
+# TODO: Дописать mainfilter, дополнив полями из question_rule
 class MainFilter(StartFilter):
+    min_price: Optional[float]
+    max_price: Optional[float]
+
     pass
 
 

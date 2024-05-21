@@ -16,7 +16,8 @@ async def get_start_list(start_filter: StartFilter,
     return await crud.get_start_list_for_user(user, start_filter)
 
 
-@router.get("/main_page/", response_model=list[CardSchema])
+# TODO: Доделать вот эту штуку...
+@router.post("/main_page/", response_model=list[CardSchema])
 async def get_start_list(start_filter: MainFilter,
                          user=Depends(get_current_user_by_token)):
     return await crud.get_start_list_for_user(user, start_filter)

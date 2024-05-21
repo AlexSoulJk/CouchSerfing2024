@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 from sqlalchemy.ext.asyncio import AsyncAttrs
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP
@@ -44,16 +43,20 @@ class Room(Base):
     location = Column(String(100))
 
 
+# Вопросы, которые выдаются пользователю при добавлении комнаты (правила).
 class QuestionRoomRule(Base):
     description = Column(String(100), nullable=False)
 
 
+# Правила(возможные варианты ответа на вопрос из QuestionRoomRule)
+# для комнаты
 class Rule(Base):
     quest_id = Column(Integer, ForeignKey("questionroomrules.id"))
     description = Column(String(100), nullable=False)
     url_pic = Column(String(100), nullable=False)
 
 
+# Правила комнаты, которые пользователь выбрал из предложенных.
 class RoomRule(Base):
     room_id = Column(Integer, ForeignKey("rooms.id"))
     rule_id = Column(Integer, ForeignKey("rules.id"))
@@ -96,28 +99,42 @@ class Deal(Base):
     status = Column(Integer, nullable=False)
 
 
+# Вопросы, для формы регистрации, которые мэтчатся
+# с некоторыми правилами комнат.
 class QuestionRule(Base):
     description = Column(String(100), nullable=False)
 
 
+# Возможные ответы, для формы регистрации, которые мэтчатся
+# с некоторыми правилами комнат.
 class AnswerRule(Base):
+    quest_id = Column(Integer, ForeignKey("questionrules.id"))
     rule_id = Column(Integer, ForeignKey("rules.id"))
     description = Column(String(100), nullable=False)
 
 
+# Ответы, для формы регистрации, которые мэтчатся
+# с некоторыми правилами комнат.
 class UserAnswerRule(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     answer_id = Column(Integer, ForeignKey("answerrules.id"))
 
 
+# Вопросы, для формы регистрации,
+# которые не связаны с правилами комнат.
 class QuestionOther(Base):
     description = Column(String(100), nullable=False)
 
 
+# Возможные ответы на вопросы, для формы регистрации,
+# которые не связаны с правилами комнат.
 class AnswerOther(Base):
     question_other_id = Column(Integer, ForeignKey('questionothers.id'))
     description = Column(String(100), nullable=False)
 
+
+# Ответы на вопросы, не связанные с правилами комнат,
+# которые выбрал пользователь при регистрации,
 
 class UserAnswerOther(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
