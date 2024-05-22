@@ -19,7 +19,6 @@ async def get_start_list_for_user(user: Optional[UserRead],
     subquery = select(RoomPicture.url_picture).where(
         Room.id == RoomPicture.room_id).order_by(
         RoomPicture.date_created).where(RoomPicture.is_front).scalar_subquery()
-
     if user is not None:
         # Запрос для комнат, которые не принадлежат пользователю и подходящих идентификаторам правил пользователя.
         stmt = select(UserAnswerRule.answer_id).where(UserAnswerRule.user_id == user.id)

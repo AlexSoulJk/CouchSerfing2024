@@ -8,7 +8,6 @@ from database.models import Room
 from .auth.schemas import UserRead
 from .room.schemas import RoomGet
 from .auth.router import fastapi_users_
-from OptionalCurrentUser import OptionalCurrentUser
 
 
 async def get_room_by_id(room_id: Annotated[int, Path]) -> RoomGet:
@@ -34,5 +33,5 @@ async def get_current_user_by_token(user=Depends(fastapi_users_.current_user()))
     return user
 
 
-async def get_optional_current_user_by_token(user=Depends(OptionalCurrentUser)):
+async def get_optional_current_user_by_token(user=Depends(fastapi_users_.current_user(optional=True))):
     return user
