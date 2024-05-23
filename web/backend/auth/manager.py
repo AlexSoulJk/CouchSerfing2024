@@ -1,10 +1,14 @@
+import os
 from typing import Optional
+
+from dotenv import load_dotenv
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
 
 from web.backend.auth.auth_user import User, get_user_db
 
-SECRET = "SECRET"
+load_dotenv()
+SECRET = os.getenv("db_url")
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):

@@ -7,6 +7,7 @@ from database.models import UserAnswerRule, Room, RoomRule, RoomPicture
 from web.backend.auth.schemas import UserRead
 from web.backend.filter_for_rooms.schemas import StartFilter, MainFilter, CardSchema, RoomSchema, Picture
 
+
 # TODO: Протестить stm1 & stm2
 # Для stm1 необходимо добавить в базу:
 # 2-ух пользователей, с одного добавляешь комнаты, с другого их ищешь.(через swagger)

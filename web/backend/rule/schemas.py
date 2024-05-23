@@ -7,6 +7,7 @@ class Rule(BaseModel):
 
 class RuleCreate(BaseModel):
     rule_id: int
+    question_id: int
 
 
 class RuleGet(Rule):

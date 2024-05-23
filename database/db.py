@@ -28,7 +28,8 @@ class Database:
             session.add_all(model_s)
             await session.commit()
 
-    async def sql_query(self, query, single=True, is_scalars = True, is_update=False, *args, **kwargs):
+    async def sql_query(self, query, single=True, is_scalars=True, is_update=False,
+                        *args, **kwargs):
         async with AsyncSession(self.__engine) as session:
             result = await session.execute(query)
             if not is_update:
