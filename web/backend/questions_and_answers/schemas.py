@@ -25,12 +25,14 @@ class AnswerChangeGet(AnswerGet):
 class FieldsForFormGet(BaseModel):
     question: Question
     answers: List[AnswerGet]
+    is_with_rule: bool
 
 
 class FieldsForFormGetChange(BaseModel):
     id_user_answer: Optional[int]
     question: Question
     answers: List[AnswerChangeGet]
+    is_with_rule: bool
 
 
 class AnswerCreate(BaseModel):
