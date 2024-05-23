@@ -33,15 +33,14 @@ class FieldsForFormGetChange(BaseModel):
     answers: List[AnswerChangeGet]
 
 
-
 class AnswerCreate(BaseModel):
     answer_id: int
 
 
 class AnswerDelete(BaseModel):
-    answer_id: int
+    id_user_answer: int
 
 
 class AnswerUpdate(BaseModel):
-    id_user_answer_id: int
+    id_user_answer: int
     new_answer_id: int
