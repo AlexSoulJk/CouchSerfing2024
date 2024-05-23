@@ -13,7 +13,8 @@ async def get_all_reg_fields():
                             answers=[AnswerGet(id=answer.id, description=answer.description)
                                      for answer in await db.sql_query(select(AnswerRule)
                                                                       .where(AnswerRule.quest_id == item.id),
-                                                                      single=False)])
+                                                                      single=False)],
+                            is_with_rule=True)
            for item in await db.sql_query(query=select(QuestionRule),
                                           single=False)]
 
@@ -21,7 +22,8 @@ async def get_all_reg_fields():
                              answers=[AnswerGet(id=answer.id, description=answer.description)
                                       for answer in await db.sql_query(select(AnswerOther)
                                                                        .where(AnswerOther.question_other_id == item.id),
-                                                                       single=False)])
+                                                                       single=False)],
+                             is_with_rule=False)
             for item in await db.sql_query(query=select(QuestionOther),
                                            single=False)]
     return res
@@ -31,6 +33,7 @@ async def set_user_answers(answers_id: list[AnswerCreate],
                            is_rules: bool,
                            user_id: int):
     # TODO: Возможно стоит написать проверку на наличие answer_id в базе)
+    # TODO: Написать функцию, которая проверяет, на добавление одинаковых записей.
     if is_rules:
         await db.create_objects([UserAnswerRule(answer_id=ans_id.answer_id,
                                                 user_id=user_id) for ans_id in answers_id])
@@ -69,7 +72,8 @@ async def get_all_filtering_fields():
                           answers=[AnswerGet(id=answer.id, description=answer.description)
                                    for answer in await db.sql_query(select(AnswerRule)
                                                                     .where(AnswerRule.quest_id == item.id),
-                                                                    single=False)])
+                                                                    single=False)],
+                          is_with_rule=True)
          for item in await db.sql_query(query=select(QuestionRule),
                                         single=False)]
 
@@ -81,13 +85,13 @@ async def delete_user_answers(answers_id: list[AnswerDelete],
     if is_rules:
         stmt = delete(UserAnswerRule) \
             .where(UserAnswerRule.id
-                   .in_([item.id_user_answer_id for item in answers_id])) \
+                   .in_([item.id_user_answer for item in answers_id])) \
             .where(UserAnswerRule.user_id == user_id)
 
     else:
         stmt = update(UserAnswerOther) \
             .where(UserAnswerOther.id
-                   .in_([item.id_user_answer_id for item in answers_id])) \
+                   .in_([item.id_user_answer for item in answers_id])) \
             .where(UserAnswerOther.user_id == user_id)
 
     return await db.delete(stmt)
@@ -115,7 +119,8 @@ async def get_all_reg_fields_for_changing(user_id: int):
                                            for answer in await db.sql_query(select(AnswerRule)
                                                                             .where(AnswerRule.quest_id == item.id),
                                                                             single=False)],
-                                  id_user_answer=selected_info.get(item.id))
+                                  id_user_answer=selected_info.get(item.id),
+                                  is_with_rule=True)
            for item in await db.sql_query(query=select(QuestionRule),
                                           single=False)]
 
@@ -137,7 +142,8 @@ async def get_all_reg_fields_for_changing(user_id: int):
                                             await db.sql_query(
                                                 select(AnswerOther).where(
                                                     AnswerOther.question_other_id == item.id), single=False)],
-                                   id_user_answer=selected_info.get(item.id))
+                                   id_user_answer=selected_info.get(item.id),
+                                   is_with_rule=False)
             for item in await db.sql_query(query=select(QuestionOther),
                                            single=False)]
 

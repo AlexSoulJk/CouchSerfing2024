@@ -31,3 +31,6 @@ async def current_user_check_token(user_id: Annotated[int, Path],
 
 async def get_current_user_by_token(user=Depends(fastapi_users_.current_user())) -> Optional[UserRead]:
     return user
+
+async def get_user_by_token(user=Depends(fastapi_users_.current_user(active=True))) -> Optional[UserRead]:
+    return user
