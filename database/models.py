@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy.ext.asyncio import AsyncAttrs
 
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, TIMESTAMP, Time
 from sqlalchemy.orm import DeclarativeBase, declared_attr
 from fastapi_users.db import SQLAlchemyBaseUserTable
 
@@ -38,9 +38,15 @@ class Room(Base):
     date_disabled = Column(Date, nullable=True)
     date_deleted = Column(Date, nullable=True)
 
+    name = Column(String(100))
     description = Column(String(3000))
     price = Column(Integer)
     location = Column(String(100))
+    capacity = Column(Integer)
+    floor_number = Column(Integer)
+    transport_info = Column(String(100))
+    time_check_in = Column(Time)
+    time_check_out = Column(Time)
 
 
 # Вопросы, которые выдаются пользователю при добавлении комнаты (правила).
@@ -139,3 +145,14 @@ class AnswerOther(Base):
 class UserAnswerOther(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     answer_other_id = Column(Integer, ForeignKey('answerothers.id'))
+
+
+class Facility(Base):
+    __tablename__ = "facilities"
+    description = Column(String(100), nullable=False)
+
+
+class RoomFacility(Base):
+    __tablename__ = "roomfacilities"
+    facility_id = Column(Integer, ForeignKey('facilities.id'))
+    room_id = Column(Integer, ForeignKey("rooms.id"))
