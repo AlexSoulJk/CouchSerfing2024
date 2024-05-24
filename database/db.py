@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import os
 from typing import AsyncGenerator
@@ -8,6 +9,7 @@ from dotenv import load_dotenv
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
+from database.utils import upload_question, upload_facilities, upload_question_other
 
 
 class Database:
@@ -58,7 +60,18 @@ class Database:
 
     async def check_and_initialize_data(self):
 
-        # добавьте здесь свой код для проверки и инициализации данных
+        initial_data_file = 'database/initial_data_questions.json'
+        initial_data_file1 = 'database/initial_data_facilities.json'
+        initial_data_file2 = 'database/initial_data_questions_other.json'
+
+        await upload_question(filename=initial_data_file,
+                              db=self)
+
+        await upload_facilities(filename=initial_data_file1,
+                                db=self)
+
+        await upload_question_other(filename=initial_data_file2,
+                                    db=self)
         pass
 
     async def disconnect(self):
