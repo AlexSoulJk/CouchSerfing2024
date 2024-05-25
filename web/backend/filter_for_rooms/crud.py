@@ -3,7 +3,7 @@ from typing import Optional
 from sqlalchemy import select, not_, null
 
 from database.db import db
-from database.models import UserAnswerRule, Room, RoomRule, RoomPicture
+from database.models import UserAnswerRule, Room, RoomRule, RoomPicture, Rule, AnswerRule
 from web.backend.auth.schemas import UserRead
 from web.backend.filter_for_rooms.schemas import StartFilter, MainFilter, CardSchema, RoomSchema, Picture
 
@@ -19,10 +19,17 @@ async def get_start_list_for_user(user: Optional[UserRead],
     subquery = select(RoomPicture.url_picture).where(
         Room.id == RoomPicture.room_id).order_by(
         RoomPicture.date_created).where(RoomPicture.is_front).scalar_subquery()
+    print(user)
     if user is not None:
         # Запрос для комнат, которые не принадлежат пользователю и подходящих идентификаторам правил пользователя.
-        stmt = select(UserAnswerRule.answer_id).where(UserAnswerRule.user_id == user.id)
+        stmt = (select(Rule.id)
+                .join(AnswerRule, AnswerRule.rule_id == Rule.id)
+                .join(UserAnswerRule, UserAnswerRule.answer_id == AnswerRule.id)
+                .where(UserAnswerRule.user_id == user.id))
+        # stmt = select(UserAnswerRule.answer_id).where(UserAnswerRule.user_id == user.id)
+        print("stmt = ", str(stmt))
         answers_id = await db.sql_query(stmt, single=False)
+        print(answers_id)
         if len(answers_id) != 0:
             # Пользователь авторизован + есть анкета интересов. stm1
             stmt = (
@@ -34,8 +41,10 @@ async def get_start_list_for_user(user: Optional[UserRead],
                 .where(Room.date_deleted == null())
                 .where(RoomRule.rule_id.in_(
                     answers_id))
+                .group_by(Room.id)
                 .order_by(Room.price)
             )
+            print(str(stmt))
         else:
             stmt = (
                 select(Room, subquery.label('picture_url'))
