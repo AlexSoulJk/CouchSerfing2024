@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="room_layot.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Форма регистрации</title>
+</head>
+<body>
+<div class='header'>
+    <div class="container">
+        <div class="header-line">
+            <div class="nav">
+                <img class="nav-item " src="logo.png" alt="">
+                <a class="nav-item nav-item-double" href="@">О нас</a>
+                <a class="nav-item nav-item-double" href="@">Каталог</a>
+                <a class="nav-item nav-item-yellow" href="@">Поиск объявлений</a>
+                    <img class="nav-item-double" src="ring.png" alt="">
+                    <a class = "nav-item notion-item nav-item-double" href="@">Уведомления</a>
+                    <div class="nav-item menu-container">
+                        <img src="menubutton.png" alt="Меню" class="menu-button">
+                        <ul class="dropdown-menu">
+                            <li><a href="@">Главная</a></li>
+                            <li><a href="@">О нас</a></li>
+                            <li><a href="@">Поиск объявлений</a></li>
+                            <li><a href="@">Уведомления</a></li>
+                        </ul>
+                    </div>  
+            </div>
+        </div>
+    </div>
+</div>
+<div class = "main">
+    <span class ="flat_name">Апартаменты BombFlat На Гривцова</span>
+    <div class="flat_main_footer">
+        <div class="rating_flat_footer">
+            <img class="rating_star_icon" src="star1.svg" alt="star icon">
+            <span class="raiting_text">
+                9.6
+            </span>
+            <div><span class="txt_flat_footer"><span id="reviews-num">420 </span>отзывов</span></div>
+            <div><span class="txt_flat_footer" id="adress">Гривцова переулок, 24</span></div>
+            <span id="coordinates" style="display:none">59.927802, 30.316748</span>
+            <div><a href="#" style="color: rgba(72, 72, 255, 1);" onclick="showOnMap()">показать на карте</a></div>
+        </div>
+    </div>
+    <div style = "margin-top: 30px ;">
+        <div class="slider slide-show" style="display: flex;">
+            <div><img src="flat_photo\image1.jpg"></div>
+            <div><img src="flat_photo\image2.jpg"></div>
+            <div><img src="flat_photo\image3.jpg"></div>
+            <div><img src="flat_photo\image4.jpg"></div>
+            <div><img src="flat_photo\image6.jpg"></div>     
+        </div>
+        <div class="slider slider-nav">
+            <div><img src="flat_photo\image1.jpg"></div>
+            <div><img src="flat_photo\image2.jpg"></div>
+            <div><img src="flat_photo\image3.jpg"></div>
+            <div><img src="flat_photo\image4.jpg"></div>
+            <div><img src="flat_photo\image6.jpg"></div>
+        </div>
+    </div>
+    <div class="line" style="border-bottom: solid 3px white;"></div>
+    <div class="section-description-apartment">
+        <h3>Трёхместная Студия</h3>
+        <div class="little-description-apartment-part">
+            <span class="little-description-apartment-txt no-margin"><span>3</span> гостя</span>
+            <span class="little-description-apartment-txt"><span>1</span> кровать</span>
+            <span class="little-description-apartment-txt">Кухонная зона</span>
+            <span class="little-description-apartment-txt">этаж <span>5</span> из <span>5</span></span>
+        </div>
+    <div class="central-description-apartment-part">
+        
+            <span class="txt-description">Атмосферная студия с большими окнами с комфортом разместит двух человек, для третьего гостя мы предоставим евро-раскладушку Икеа. Удобство и функциональность внутреннего</span>
+              
+            <span>Спальные места: <span>2</span></span>
+        
+            <span class="txt-description">1 кровать king-size</span>
+        </div>
+    </div>
+
+    <div class="line" style="border-bottom: solid 3px white;"></div>
+
+    <div class="section-description-apartment">
+        <h3>Правила проживания</h3>
+        <div class="time-description-apartment-part">
+            <div class = "time-to-cum">
+                <span class="txt-title-to-cum">Заезд<br></span>
+                <span class="txt-time-to-cum">после 14.00</span>
+            </div>
+            <div>
+                <span class="txt-title-to-cum">Отъезд<br></span>
+                <span class="txt-time-to-cum">До 12.00</span>
+            </div>
+            
+        </div>
+        <div class="section-description-rules txt-description">
+            <div class="text-and-icon-connection description-rules-block ">
+                <img class="rules-icon" src="chil.svg" alt="child icon">
+                <span>можно с детьми любого возраста</span>
+            </div>
+            <div class="text-and-icon-connection">        
+                <img class="rules-icon" src="smoking.svg" alt="smoking icon"><span>курение разрешено в специально отведённых местах</span>
+            </div>
+            <div class="text-and-icon-connection">
+                <img class="rules-icon" src="pet.svg" alt="pet icon"><span>можно с питомцами по согласованию с хозяином жилья</span>
+            </div>
+            <div class="text-and-icon-connection">
+                <img class="rules-icon" src="doc.svg" alt="smoking icon"><span>владелец предоставляет отчётные документы о проживании по согласию</span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="line" style="border-bottom: solid 3px white;"></div>
+
+    <div class="section-description-apartment">
+        <h3>Основные удобства</h3>
+        <div class="comfort-description-section">
+            <div class="txt-description comfort-description-container" >
+                <div class="comfort-txt">
+                    <img class="dot_icon" src="dot.svg" alt="dot icon"><span>бeспроводной интернет Wi-Fi<br></span>
+                </div>
+                <div class="comfort-txt">
+                    <img class="dot_icon" src="dot.svg" alt="dot icon"><span>фен<br></span>
+                </div>
+                <div class="comfort-txt">
+                    <img class="dot_icon" src="dot.svg" alt="dot icon"><span>дизайнерский ремонт<br></span>
+                </div>
+                <div class="comfort-txt">
+                    <img class="dot_icon" src="dot.svg" alt="dot icon"><span>телевизор<br></span>
+                </div>
+                <div class="comfort-txt">
+                    <img class="dot_icon" src="dot.svg" alt="dot icon"><span>электрический чайник<br></span>
+                </div>
+        </div>
+        <div class="txt-description comfort-description-container">
+            <div class="comfort-txt">
+                <img class="dot_icon" src="dot.svg" alt="dot icon"><span>полотенца<br></span>
+            </div>
+            <div class="comfort-txt">
+                <img class="dot_icon" src="dot.svg" alt="dot icon"><span>постельное белье<br></span>
+            </div>
+            <div class="comfort-txt">
+                <img class="dot_icon" src="dot.svg" alt="dot icon"><span>кондиционер<br></span>
+            </div>
+            <div class="comfort-txt">
+                <img class="dot_icon" src="dot.svg" alt="dot icon"><span>микроволновка<br></span>
+            </div>
+            <div class="comfort-txt">
+                <img class="dot_icon" src="dot.svg" alt="dot icon"><span>кухонная утварь и посуда<br></span>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="line" style="border-bottom: solid 3px white;"></div>
+    <div class="section-description-apartment">
+        <div class="reviews-title">
+            <span class="main-txt-reviews">Оценка гостей</span>
+            <div>
+                <img class="star_icon" src="Star 1max.svg" alt="star icon">
+                <span id="rating" class="rating-txt-reviews">9.6</span>
+            </div>
+            
+            <span class = "reviews-num-txt"><span id="reviews-num">420</span> отзывов</span>
+        </div>
+        <div class="reviews-progress-block  txt-description">
+            <div class="reviews-container">
+                <div class="progress-container">
+                    <span>Чистота</span>
+                    <div class="display-progress">
+                        <div class="progress-bar" id="clean-progress-bar">
+                            <div class="progress" id="clean-progress"></div>     
+                        </div>
+                        <span id="clean-value">9.6</span> 
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <span>Расположение</span>
+                    <div class="display-progress">
+                        <div class="progress-bar" id="place-progress-bar">
+                            <div class="progress" id="place-progress"></div>
+                        </div>
+                        <span id="place-value">9.9</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="reviews-container">
+                <div class="progress-container">
+                    <span>Соответствие ожиданиям</span>
+                    <div class="display-progress">
+                        <div class="progress-bar" id="expectation-progress-bar">
+                            <div class="progress" id="expectation-progress"></div>
+                        </div>
+                        <span id="expectation-value">9.4</span>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <span>Цена - качество</span>
+                    <div class="display-progress">
+                        <div class="progress-bar" id="price-progress-bar">
+                            <div class="progress" id="price-progress"></div>
+                        </div>
+                        <span id="price-value">9.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line" style="border-bottom: solid 3px white;"></div>
+    <div class="section-description-apartment ">
+        <div class="person-info-block">
+            <div class="person-info">
+                <div class="person-main-info">
+                    <img class="person-img" id="person-img" alt="person photo" src="person_ph.svg">
+                    <span class = "person-name" id="person-name">Александр</span>
+                </div>
+                <span class="person-language-txt txt-description">Общается на языках: <span id="person-languages">Русский, Английский</span></span> 
+            </div>
+            <div>
+                <button type = "button" class="person-info-button">Связаться</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class = "footer-logo">
+        <img src="logo2.png" alt="">
+            
+    </div>
+    <div class="menu-text">
+        <a class="footer-title-text">Меню<br></a>
+        <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+    </div>
+    <div class="services-text">
+        <a class="footer-title-text">Услуги<br></a>
+        <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+    </div>
+    <div class="information-text">
+        <a class="footer-title-text">Информация<br></a>
+        <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+    </div>
+    <div class="contact-text">
+        <a class="footer-title-text">Кoнтакты<br></a>
+        <a class="footer-text">La-la-la-la<br>La-la-la-la-la-la<br>La-la-la-la<br>La-la-la-la-la</a>
+    </div>
+</div>
+
+<script src="room_layot.js"></script>
+</body>
+</html>
+
+
