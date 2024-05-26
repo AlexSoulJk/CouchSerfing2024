@@ -7,6 +7,5 @@ from database.db import db
 from database.models import User
 
 
-
 async def get_user_db(session: AsyncSession = Depends(db.get_async_session)):
     yield SQLAlchemyUserDatabase(session, User)

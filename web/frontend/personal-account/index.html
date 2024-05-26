@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Апартамент</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../login-form/styles.css">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+</head>
+<body>
+<header class="header">
+    <div class="header-container">
+        <a class="header-logo" href="/">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Couch Surfing" loading="lazy" />
+        </a>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link" style="width: 59px">О нас</a>
+            <a href="#" class="nav-link">Каталог</a>
+            <button class="header-search-button">Поиск объявлений</button>
+        </nav>
+        <div class="notification-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dacbe95f09e7e155ef18463748f2375bc2d602b0145cbf337aa3574ffc56a6d0?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Notification Icon" class="notification-icon" />
+            <a href="#" class="notification-text">Уведомления</a>
+        </div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Profile" class="profile-image-header" id="profile-image" />
+    </div>
+</header>
+
+<nav class="personal-cabinet" id="profile-menu" style="display: none;">
+    <a href="#" class="cabinet-item">Личный кабинет</a>
+    <a href="#" class="cabinet-item">Бронирования</a>
+    <a href="#" class="cabinet-item">Сдать жильё</a>
+    <a href="#" class="cabinet-item">Избранное</a>
+    <a href="#" class="cabinet-item">Уведомления</a>
+    <a href="#" class="cabinet-item">Навигация по сайту</a>
+    <div class="user-actions">
+        <a href="#" class="help-link">HELP</a>
+        <a href="#" class="login-link" id="login-link" onClick="showLogin()">LOG IN</a>
+        <a href="#" class="logout-link" id="logout-link" style="display: none;">LOG OUT</a>
+    </div>
+</nav>
+
+<div id="login-modal" class="login">
+    <div id="login-container" class="login-container">
+        <h2>Авторизация</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username-login" class="personal-form-label">Email:</label>
+                <input type="text" id="username-login" name="username" class="personal-form-input-login filled" placeholder="Ваша почта" required>
+            </div>
+            <div class="form-group">
+                <label for="password-login" class="personal-form-label">Пароль:</label>
+                <input type="password" id="password-login" name="password" class="personal-form-input-login" placeholder="Пароль" required>
+            </div>
+            <button type="submit" id="submit-login" class="center-button">Войти</button>
+        </form>
+    </div>
+</div>
+
+
+<section class="profile-section-pa">
+    <div class="profile-content-pa">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <h2 class="sidebar-header"><span class="bold" style="color: white">Couch</span> <span class="highlight">Surfing </span></h2>
+                <nav class="sidebar-item">Профиль пользователя</nav>
+                <nav class="sidebar-item">Избранное</nav>
+                <nav class="sidebar-item">Интересы</nav>
+                <nav class="sidebar-item">Сделки</nav>
+            </div>
+        </aside>
+        <main class="main-content-pa">
+            <section class="profile-form-pa">
+                <div class="container-pa">
+                    <h2 class="profile-header-pa">Профиль пользователя</h2>
+                    <button class="add-room-btn" tabindex="0">Добавить комнату</button>
+                </div>
+                <div class="profile-container">
+                    <div class="profile-content">
+                        <div class="profile-info">
+                            <div class="profile-details">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/28389b78ed9c02ee2d197eea563aea78539cacbb59b8f82fc4a03d5c3ab0c253?apiKey=34d7d013791846f1943a6733fbd2383a&" class="profile-pic" alt="Profile picture of Александр"/>
+                                <div class="details-label">
+                                    <div class="profile-name">Александр</div>
+                                    <div class="profile-username">Sanya_228</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-details">
+                                <div class="details-item">
+                                    <span class="details-label">Email:</span>
+                                    <span class="details-value">sanya_228_10x@gmail.ru</span>
+                                </div>
+                                <div class="details-item">
+                                    <span class="details-label">Соцсеть:</span>
+                                    <span class="details-value">t.me\ssanyaaaa_101</span>
+                                </div>
+                                <div class="details-item">
+                                    <span class="details-label"></span>
+                                    <span class="details-value"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-container-2">
+                    <div class="profile-content-2">
+                        <div class="contact-info">
+                            <div class="contact-details-2">
+                                <div class="details-item-2">
+                                    <span class="details-label-2"></span>
+                                    <span class="details-value-2"></span>
+                                </div>
+                                <div class="details-item-2">
+                                    <span class="details-label-2">Чем Вы занимаетесь:</span>
+                                    <span class="details-value-2">Учусь</span>
+                                </div>
+                                <div class="details-item-2">
+                                    <span class="details-label-2">Зачем Вы регистрируетесь:</span>
+                                    <span class="details-value-2">Другое</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-details-2">
+                                <div class="details-item-2">
+                                    <span class="details-label-2">Как относитесь к животным:</span>
+                                    <span class="details-value-2">Нейтрально</span>
+                                </div>
+                                <div class="details-item-2">
+                                    <span class="details-label-2">Как относитесь к курению:</span>
+                                    <span class="details-value-2">Крайне позитивно</span>
+                                </div>
+                                <div class="details-item-2">
+                                    <span class="details-label-2">Как относитесь к алкоголю:</span>
+                                    <span class="details-value-2">Позитивно</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <button class="edit-button" tabindex="0">Редактировать</button>
+        </main>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-columns">
+            <div class="footer-main-column">
+                <div class="footer-main-content">
+                    <div class="footer-main-columns">
+                        <div class="footer-logo-column">
+                            <a href="/">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c43c3aff6f50eb5f73d18dfbf6fef65e4f33234ab77bce70f8d0ecde7c2c5ac4?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="Logo" class="footer-logo" loading="lazy" />
+                            </a>
+                        </div>
+                        <div class="footer-menu-column">
+                            <nav class="footer-menu">
+                                <h3 class="footer-menu-title">Меню</h3>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la</a>
+                                <a href="#" class="footer-menu-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                        <div class="footer-services-column">
+                            <nav class="footer-services">
+                                <h3 class="footer-services-title">Услуги</h3>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la</a>
+                                <a href="#" class="footer-services-item">La-la-la-la-la</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-info-column">
+                <div class="footer-info-columns">
+                    <div class="footer-info">
+                        <h3 class="footer-info-title">Информация</h3>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la</a>
+                        <a href="#" class="footer-info-item">La-la-la-la-la</a>
+                    </div>
+                    <div class="footer-contacts">
+                        <h3 class="footer-contacts-title">Контакты</h3>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la</a>
+                        <a href="#" class="footer-contacts-item">La-la-la-la-la</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script src="../login-form/script.js"></script>
+<script src="../auth.js"></script>
+</body>
+</html>

@@ -38,7 +38,7 @@ async def set_user_answers(answers_id: list[AnswerCreate],
         await db.create_objects([UserAnswerRule(answer_id=ans_id.answer_id,
                                                 user_id=user_id) for ans_id in answers_id])
     else:
-        await db.create_objects([UserAnswerOther(answer_id=ans_id,
+        await db.create_objects([UserAnswerOther(answer_other_id=ans_id.answer_id,
                                                  user_id=user_id) for ans_id in answers_id])
     return True
 

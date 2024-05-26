@@ -27,6 +27,7 @@ class UserCreate(schemas.BaseUserCreate):
     is_superuser: Optional[bool] = False
     is_verified: Optional[bool] = False
 
+
 class UserUpdate(schemas.BaseUserCreate):
     nickname: Optional[str] = None
     email: Optional[str] = None
