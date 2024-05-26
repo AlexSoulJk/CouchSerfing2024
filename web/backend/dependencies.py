@@ -42,3 +42,13 @@ async def get_current_user_by_token(user=Depends(fastapi_users_.current_user()))
 
 async def get_user_by_token(user=Depends(fastapi_users_.current_user(active=True))) -> Optional[UserRead]:
     return user
+
+
+async def is_room_owner(room: RoomGet = Depends(get_room_by_id),
+                        user=Depends(fastapi_users_.current_user(active=True))):
+    room_ = await db.sql_query(select(Room).where(Room.id == room.id).where(Room.user_id == user.id))
+    if room_ is not None:
+        return RoomGet(**object_as_dict(room_))
+    else:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail=f"Can't change room that doesn't yours.")

@@ -1,9 +1,11 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends
 from . import crud
-from ..questions_and_answers.schemas import Question, FieldsForFormGet, AnswerCreate, AnswerUpdate, AnswerDelete, \
+from ..questions_and_answers.schemas import FieldsForFormGet, AnswerCreate, AnswerUpdate, AnswerDelete, \
     FieldsForFormGetChange
 from ..auth.schemas import UserRead
-from ..dependencies import current_user_check_token, get_user_by_token
+from ..dependencies import get_user_by_token
 
 router = APIRouter(tags=["question_and_answer"])
 
@@ -35,7 +37,7 @@ async def get_filtering_fields_all():
 @router.post("/{is_with_rule}")
 async def set_interest(answers_list: list[AnswerCreate],
                        is_with_rule: bool,
-                       user: UserRead = Depends(get_user_by_token)) -> bool:
+                       user: Optional[UserRead] = Depends(get_user_by_token)) -> bool:
     return await crud.set_user_answers(answers_list, is_with_rule, user.id)
 
 
