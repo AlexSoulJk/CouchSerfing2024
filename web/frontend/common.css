@@ -1,0 +1,747 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+    margin-block: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+    list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+    --paragraphMarginBottom: 24px;
+
+    margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+html {
+    /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+    height: 100%;
+    /**
+      Плавный скролл
+     */
+    scroll-behavior: smooth;
+}
+
+body {
+    /**
+      Пригодится в большинстве ситуаций
+      (когда, например, нужно будет "прижать" футер к низу сайта)
+     */
+    min-height: 100%;
+    /**
+      Унифицированный интерлиньяж
+     */
+    line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] { fill: currentColor }
+svg *[stroke] { stroke: currentColor }
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+    transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:root {
+    --font-family: 'Montserrat', sans-serif;
+
+    --container-width: 970px;
+    --container-padding-x: 15px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: normal;
+    color: white;
+    background-color: #333333;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d9d9d9;
+}
+
+/*.container {*/
+/*    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);*/
+/*    margin-inline: auto;*/
+/*    padding-inline: var(--container-padding-x);*/
+/*}*/
+
+.header {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    overflow: hidden;
+    background-color: #272727;
+    box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px 60px;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .header-container {
+        flex-wrap: wrap;
+        max-width: 100%;
+        padding-right: 30px;
+    }
+}
+
+.header-logo {
+    width: 115px;
+    margin-right: auto;
+}
+
+.nav-menu {
+    display: flex;
+    column-gap: 50px;
+    margin-right: 50px;
+}
+
+@media (max-width: 991px) {
+    .nav-menu {
+        max-width: 100%;
+        column-gap: 50px;
+    }
+}
+
+.nav-link {
+    display: flex;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: var(--font-family);
+    margin: auto 0;
+    flex-wrap: nowrap;
+}
+
+.header-search-button {
+    font-family: var(--font-family);
+    width: 360px;
+    height: 55px;
+    color: #ffd233;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 210, 51, 1);
+    font-weight: 500;
+    background-color: transparent;
+    margin: auto;
+}
+
+@media (max-width: 991px) {
+    .header-search-button {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-search-button {
+        margin-left: 50px;
+    }
+}
+
+.header-search-button:hover {
+    background-color: #202020;
+}
+
+.notification-container {
+    display: flex;
+    align-items: center;
+    width: 172px;
+    height: 25px;
+    column-gap: 4px;
+}
+
+@media (max-width: 991px) {
+    .notification-container {
+        white-space: initial;
+    }
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    margin: auto 0;
+}
+
+.notification-icon {
+    fill: #ffd233;
+}
+
+@media (max-width: 991px) {
+    .notification-icon {
+        margin-left: 40px;
+    }
+}
+
+.notification-text {
+    font-family: var(--font-family);
+    margin: auto 0;
+}
+
+.notification-text:hover {
+    color: #d9d9d9;
+}
+
+.profile-image-header {
+    width: 104px;
+    max-width: 100%;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .profile-image-header {
+        padding-top: 10px;
+    }
+}
+
+/* burger */
+
+.personal-cabinet {
+    margin-top: 4px;
+    background-color: #ffd233;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 600;
+    width: 372px;
+    padding: 1px 10px 5px 10px;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.cabinet-item {
+    align-items: start;
+    border-bottom: 2px solid #000;
+    color: #000;
+    font-family: Montserrat, sans-serif;
+    justify-content: center;
+    margin-top: 5px;
+    padding: 15px 20px;
+    cursor: default;
+}
+
+.cabinet-item:hover {
+    color: #F5F5F5;
+    border-bottom-color: #F5F5F5;
+}
+
+.user-actions {
+    display: flex;
+    font-size: 15px;
+    font-weight: 880;
+    gap: 20px;
+    justify-content: space-between;
+    line-height: 147%;
+    margin-top: 7px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+
+.help-link {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: Inter, sans-serif;
+}
+
+.help-link:hover {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.login-link {
+    color: rgb(136, 197, 0);
+    font-family: Inter, sans-serif;
+}
+
+.login-link:hover {
+    color: rgb(0, 220, 0);
+}
+
+.logout-link {
+    color: rgba(255, 0, 0, 0.8);
+    font-family: Inter, sans-serif;
+}
+
+.logout-link:hover {
+    color: rgba(255, 0, 0, 1);
+}
+
+/* body */
+
+
+
+/* footer */
+
+.footer {
+    box-shadow: 0 -25px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: #272727;
+    display: flex;
+    margin-top: 76px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 37px 60px;
+}
+
+@media (max-width: 991px) {
+    .footer {
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+}
+
+.footer-content {
+    width: 1005px;
+    max-width: 100%;
+}
+
+.footer-columns {
+    gap: 190px;
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .footer-columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+
+.footer-main-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 66%;
+    margin-left: 0;
+}
+
+@media (max-width: 991px) {
+    .footer-main-column {
+        width: 100%;
+    }
+}
+
+.footer-main-content {
+    flex-grow: 1;
+}
+
+@media (max-width: 991px) {
+    .footer-main-content {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+}
+
+.footer-main-columns {
+    gap: 20px;
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .footer-main-columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+
+.footer-logo-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 38%;
+    margin-left: 0;
+}
+
+@media (max-width: 991px) {
+    .footer-logo-column {
+        width: 100%;
+    }
+}
+
+.footer-logo {
+    aspect-ratio: 1.96;
+    object-position: center;
+    width: 115px;
+    max-width: 100%;
+    align-self: center;
+    margin: auto 0;
+}
+
+@media (max-width: 991px) {
+    .footer-logo {
+        margin-top: 40px;
+    }
+}
+
+.footer-menu-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 36%;
+    margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+    .footer-menu-column {
+        width: 100%;
+    }
+}
+
+.footer-menu {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+    .footer-menu {
+        margin-top: 40px;
+        white-space: initial;
+    }
+}
+
+.footer-menu-title {
+    color: #ffd233;
+    font: 16px Inter, sans-serif;
+}
+
+.footer-menu-item {
+    font-family: Inter, sans-serif;
+    margin-top: 19px;
+    text-decoration: none;
+}
+
+.footer-menu-item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.footer-services-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 26%;
+    margin-left: 20px;
+}
+
+@media (max-width: 991px) {
+    .footer-services-column {
+        width: 100%;
+    }
+}
+
+.footer-services {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+    .footer-services {
+        margin-top: 40px;
+        white-space: initial;
+    }
+}
+
+.footer-services-title {
+    color: #ffd233;
+    font: 16px Inter, sans-serif;
+}
+
+.footer-services-item {
+    font-family: Inter, sans-serif;
+    margin-top: 17px;
+    text-decoration: none;
+}
+
+.footer-services-item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.footer-info-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 34%;
+}
+
+@media (max-width: 991px) {
+    .footer-info-column {
+        width: 100%;
+    }
+}
+
+.footer-info-columns {
+    display: flex;
+    flex-grow: 1;
+    gap: 100px;
+    font-size: 14px;
+    color: #b3b3b3;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-right: 40px;
+}
+
+@media (max-width: 991px) {
+    .footer-info-columns {
+        margin-top: 40px;
+        white-space: initial;
+    }
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+@media (max-width: 991px) {
+    .footer-info {
+        white-space: initial;
+    }
+}
+
+.footer-info-title {
+    color: #ffd233;
+    font: 16px Inter, sans-serif;
+}
+
+.footer-info-item {
+    font-family: Inter, sans-serif;
+    margin-top: 17px;
+    text-decoration: none;
+}
+
+.footer-info-item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+@media (max-width: 991px) {
+    .footer-contacts {
+        white-space: initial;
+    }
+}
+
+.footer-contacts-title {
+    color: #ffd233;
+    font: 16px Inter, sans-serif;
+}
+
+.footer-contacts-item {
+    font-family: Inter, sans-serif;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.footer-contacts-item:not(:first-child) {
+    margin-top: 10px;
+}
+
+
+/*html, body {*/
+/*    height: 100%;*/
+/*    margin: 0;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*.footer {*/
+/*    margin-top: auto; !* Это позволяет футеру "приклеиться" к низу *!*/
+/*}*/

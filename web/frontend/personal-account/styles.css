@@ -1,0 +1,302 @@
+.profile-section-pa {
+    align-self: center;
+    align-items: center;
+    margin-top: 51px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1170px;
+}
+@media (max-width: 991px) {
+    .profile-section-pa {
+        align-self: center;
+        max-width: 100%;
+        margin-top: 40px;
+    }
+}
+.profile-content-pa {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 991px) {
+    .profile-content-pa {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 23%;
+}
+@media (max-width: 991px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+.sidebar-content {
+    border-radius: 10px 0px 0px 10px;
+    background-color: #232323;
+    position: relative;
+    left: -40px;
+    flex-direction: column;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    width: 120%;
+    padding: 17px 24px 50px 24px;
+}
+@media (max-width: 991px) {
+    .sidebar-content {
+        margin-top: 33px;
+        padding: 0 20px;
+    }
+}
+.sidebar-header {
+    color: #ffd233;
+    font: 600 32px Montserrat, sans-serif;
+}
+.sidebar-item {
+    font-family: Montserrat, sans-serif;
+    margin-top: 33px;
+}
+.main-content-pa {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 77%;
+    margin-left: 20px;
+}
+@media (max-width: 991px) {
+    .main-content {
+        width: 100%;
+    }
+}
+.profile-form-pa {
+    display: flex;
+    margin-top: 28px;
+    flex-grow: 1;
+    flex-direction: column;
+}
+@media (max-width: 991px) {
+    .profile-form-pa {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+}
+
+.container-pa {
+    display: flex;
+    max-width: 961px;
+    gap: 20px;
+    padding: 0;
+}
+.profile-header-pa {
+    color: #fff;
+    flex-grow: 1;
+    margin: auto 0 10px 8px;
+    font: 700 25px Montserrat, sans-serif;
+}
+.add-room-btn {
+    border-radius: 10px;
+    background-color: #ffd233;
+    color: #000;
+    text-align: center;
+    justify-content: right;
+    padding: 19px 60px;
+    font: 500 20px Montserrat, sans-serif;
+}
+@media (max-width: 991px) {
+    .container-pa {
+        flex-wrap: wrap;
+    }
+    .add-room-btn {
+        padding: 0 20px;
+    }
+}
+
+
+.profile-container {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    max-width: 970px;
+    padding: 30px 80px;
+    margin-top: 35px;
+}
+@media (max-width: 991px) {
+    .profile-container {
+        padding: 0 20px;
+    }
+}
+.profile-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    align-content: center;
+}
+@media (max-width: 991px) {
+    .profile-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+.profile-info, .contact-info {
+    display: flex;
+    flex-direction: column;
+}
+.profile-info {
+    width: 56%;
+}
+@media (max-width: 991px) {
+    .profile-info {
+        width: 100%;
+    }
+}
+.profile-details {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: -50px;
+}
+@media (max-width: 991px) {
+    .profile-details {
+        margin-top: 40px;
+    }
+}
+.profile-pic {
+    aspect-ratio: 1;
+    object-position: center;
+    width: 95px;
+    border-radius: 50%;
+}
+.profile-name {
+    color: #222;
+    font-family: Montserrat, sans-serif;
+    margin-top: 15px;
+}
+.profile-username {
+    color: #616161;
+    font-family: Montserrat, sans-serif;
+    font-size: 18.5px;
+    padding-left: 5px;
+}
+.contact-info {
+    width: 44%;
+    margin-left: 20px;
+}
+@media (max-width: 991px) {
+    .contact-info {
+        width: 100%;
+    }
+}
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Расстояние между элементами details-item */
+    font-size: 16px;
+    color: #222;
+    font-family: Montserrat, sans-serif;
+}
+@media (max-width: 991px) {
+    .contact-details {
+        margin-top: 40px;
+    }
+}
+.details-item {
+    display: flex;
+    gap: 20px; /* Расстояние между столбцами */
+}
+.details-label {
+    font-weight: 600;
+    min-width: 100px; /* Ширина первого столбца */
+    text-align: left; /* Выровнять текст по левому краю */
+}
+.details-value {
+    font-weight: 500;
+    flex-grow: 1; /* Заполнить оставшееся пространство */
+    text-align: left; /* Выровнять текст по левому краю */
+}
+
+
+
+.profile-container-2 {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    max-width: 970px;
+    padding: 30px 40px 30px 30px;
+    margin-top: 35px;
+}
+@media (max-width: 991px) {
+    .profile-container-2 {
+        padding: 0 20px;
+    }
+}
+.profile-content-2 {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    align-content: center;
+}
+@media (max-width: 991px) {
+    .profile-content-2 {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+
+.contact-details-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Расстояние между элементами details-item */
+    font-size: 16px;
+    color: #222;
+    font-family: Montserrat, sans-serif;
+}
+@media (max-width: 991px) {
+    .contact-details-2 {
+        margin-top: 40px;
+    }
+}
+.details-item-2 {
+    display: flex;
+    gap: 5px; /* Расстояние между столбцами */
+}
+.details-label-2 {
+    font-weight: 600;
+    min-width: 250px; /* Ширина первого столбца */
+    text-align: left; /* Выровнять текст по левому краю */
+}
+.details-value-2 {
+    font-weight: 500;
+    flex-grow: 1; /* Заполнить оставшееся пространство */
+    text-align: left; /* Выровнять текст по левому краю */
+}
+
+
+.edit-button {
+    font-family: Montserrat, sans-serif;
+    border-radius: 10px;
+    background-color: #ffd233;
+    align-self: start;
+    margin-top: 18px;
+    color: #000;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+    justify-content: center;
+    padding: 11px 32px;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .edit-button {
+        white-space: initial;
+        padding: 0 20px;
+    }
+}
