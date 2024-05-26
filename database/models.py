@@ -75,7 +75,7 @@ class RoomPicture(Base):
     date_disabled = Column(Date, nullable=True)
 
     url_picture = Column(String(100), nullable=False)
-    is_front = Column(Boolean, nullable=True)
+    is_front = Column(Boolean, nullable=False)
 
 
 class Notification(Base):
