@@ -1,0 +1,54 @@
+[
+  {
+    "QuestionOther":
+    {
+      "description": "С какой целью регистрируйтесь?"
+    },
+    "AnswersOthers":
+    [
+      {
+        "description": "Путешествия"
+      },
+      {
+        "description": "Бизнес цели"
+      },
+      {
+        "description": "Вдохновение"
+      }
+    ]
+  },
+  {
+    "QuestionOther": {
+      "description": "Чем Вы занимаетесь?"
+    },
+    "AnswersOthers":
+    [
+      {
+        "description": "Работаю"
+      },
+      {
+        "description": "Учусь"
+      },
+      {
+        "description": "Путешественник"
+      }
+    ]
+  },
+  {
+    "QuestionOther": {
+      "description": "Как вы узнали о нас?"
+    },
+    "AnswersOthers":
+    [
+      {
+        "description": "От знакомых."
+      },
+      {
+        "description": "Реклама в yandex/google."
+      },
+      {
+        "description": "Реклама в социальных сетях."
+      }
+    ]
+  }
+]
