@@ -16,6 +16,9 @@ class StartFilter(BaseFilter):
 class MainFilter(StartFilter):
     min_price: Optional[float]
     max_price: Optional[float]
+    guest_count: Optional[int]
+    min_floor: Optional[int]
+    max_floor: Optional[int]
 
     pass
 
