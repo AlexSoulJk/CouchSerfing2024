@@ -57,7 +57,7 @@ async def delete_pictures_in_room_by_ids(pictures: list[PictureUpdate], room_id:
 
 
 # TODO: Подумать над использованием флага is_single
-async def get_card_picture(room_id: int, is_single=True):
+async def get_card_picture(room_id: int, is_single=True, is_all=False):
     stmt = (select(RoomPicture).where(
         RoomPicture.room_id == room_id).where(
         RoomPicture.date_disabled == null()).order_by(RoomPicture.id)
@@ -65,6 +65,9 @@ async def get_card_picture(room_id: int, is_single=True):
         RoomPicture.room_id == room_id).where(
         RoomPicture.date_disabled == null())
             .where(RoomPicture.is_front).order_by(RoomPicture.id))[is_single]
+
+    stmt = (stmt, select(RoomPicture).where(
+        RoomPicture.room_id == room_id).order_by(RoomPicture.id))[is_all]
 
     picture = await db.sql_query(query=stmt, single=is_single)
 
