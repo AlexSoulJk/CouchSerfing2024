@@ -52,4 +52,4 @@ async def update_rules_in_room(rules: list[RuleForChange],
 @router.post("change/{room_id}/", response_model=list[CardRuleGetForChange])
 async def get_list_rules_for_change_by_room_id(room: RoomGet = Depends(get_room_by_id),
                                                user: UserRead = Depends(get_user_by_token)):
-    await crud.get_rules_in_room_for_change(room_id=room.id)
+    return await crud.get_rules_in_room_for_change(room_id=room.id)

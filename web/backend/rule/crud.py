@@ -39,11 +39,12 @@ async def get_rules_in_room(room_id: int):
 
 async def get_all_rules():
     res = [CardRuleGet(question=Question(description=item.description),
-                       answers=[RuleGet(id=answer.id, description=answer.description)
-                                for answer in await db.sql_query(select(Rule)
-                                                                 .where(Rule.quest_id == item.id),
-                                                                 single=False)],
-                       is_with_rule=True)
+                       rules=[RuleGet(id=answer.id,
+                                      description=answer.description,
+                                      url_pic=answer.url_pic)
+                              for answer in await db.sql_query(select(Rule)
+                                                               .where(Rule.quest_id == item.id),
+                                                               single=False)])
            for item in await db.sql_query(query=select(QuestionRoomRule),
                                           single=False)]
     return res
@@ -56,7 +57,7 @@ async def get_rules_not_in_room(room_id: int):
 
 async def get_rules_in_room_for_change(room_id: int):
     def get_info():
-        return [selected_ans.answer_id for selected_ans, _ in selected_answers], \
+        return [selected_ans.rule_id for selected_ans, _ in selected_answers], \
             dict([(quest_id, selected_ans.id)
                   for selected_ans, quest_id in selected_answers])
 
@@ -67,22 +68,22 @@ async def get_rules_in_room_for_change(room_id: int):
         .where(RoomRule.room_id == room_id),
         single=False, is_scalars=False
     )
-
     selected_answers_id, selected_info = get_info()
     res = [CardRuleGetForChange(question=Question(description=item.description),
-                                answers=[RuleGetForChange(id=answer.id,
-                                                          description=answer.description,
-                                                          is_selected=answer.id in selected_answers_id)
-                                         for answer in await db.sql_query(select(Rule)
-                                                                          .where(Rule.quest_id == item.id),
-                                                                          single=False)],
-                                id_user_answer=selected_info.get(item.id))
+                                rules=[RuleGetForChange(id=answer.id,
+                                                        description=answer.description,
+                                                        url_pic=answer.url_pic,
+                                                        is_selected=answer.id in selected_answers_id)
+                                       for answer in await db.sql_query(select(Rule)
+                                                                        .where(Rule.quest_id == item.id),
+                                                                        single=False)],
+                                id_user_rule=selected_info.get(item.id))
            for item in await db.sql_query(query=select(QuestionRoomRule),
                                           single=False)]
     return res
 
 
-def update_rules(rules: list[RuleForChange]):
+async def update_rules(rules: list[RuleForChange]):
     whens = [(RoomRule.id == rule.id_user_answer, rule.id_rule) for rule in rules]
 
     stmt = update(RoomRule) \

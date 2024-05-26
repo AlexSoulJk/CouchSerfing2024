@@ -31,7 +31,7 @@ class CardRuleGet(BaseModel):
 
 
 class CardRuleGetForChange(BaseModel):
-    id_user_answer: Optional[int]
+    id_user_rule: Optional[int]
     question: Question
     rules: List[RuleGetForChange]
 
