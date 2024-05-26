@@ -90,3 +90,22 @@ personalCabinet.addEventListener('mouseleave', function() {
     // Изменяем src изображения профиля на первоначальный
     profileImage.src = "https://cdn.builder.io/api/v1/image/assets/TEMP/2bd64e9a6fa98f01ccec64176921fa8fdda4e581d0686a57ca63d853209ef8e5?apiKey=34d7d013791846f1943a6733fbd2383a&";
 });
+
+
+//НЕ ХОЧУ ДОПУСКАТЬ ПЕРЕХОД НА СТРАНИЦУ РЕГИСТРАЦИИ АВТОРИЗОВАННЫМ ПОЛЬЗОВАТЕЛЯМ
+// Обработчик клика на кнопку для перехода на страницу регистрации
+document.getElementById("registration-button").addEventListener("click", function(event) {
+    // Получаем токен из локального хранилища
+    const token = localStorage.getItem('token');
+    // Если токен есть, значит пользователь авторизован
+    if (token) {
+        // Предотвращаем переход на страницу регистрации
+        event.preventDefault();
+        // Выводим сообщение о том, что пользователь уже авторизован
+        alert("А вы ведь уже зарегистрированы!");
+        // Если нужно, можно выполнить другие действия, например, перенаправить на другую страницу
+        // window.location.href = '/another-page.html';
+    } else {
+        redirectToPage('/CouchSerfing2024/web/frontend/registration-form/index.html');
+    }
+});

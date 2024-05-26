@@ -34,7 +34,8 @@
     <a href="#" class="cabinet-item">Навигация по сайту</a>
     <div class="user-actions">
         <a href="#" class="help-link">HELP</a>
-        <a href="#" class="login-link" onClick="showLogin()">LOG IN</a>
+        <a href="#" class="login-link" id="login-link" onClick="showLogin()">LOG IN</a>
+        <a href="#" class="logout-link" id="logout-link" style="display: none;">LOG OUT</a>
     </div>
 </nav>
 
@@ -78,8 +79,8 @@
                         <input type="email" id="email" name="email" class="personal-form-input filled" placeholder="Текст" required/>
                     </div>
                     <div class="personal-form-group">
-                        <label for="nickname" class="personal-form-label">Login</label>
-                        <input type="text" id="nickname" name="nickname" class="personal-form-input filled" placeholder="Текст" required/>
+                        <label for="login" class="personal-form-label">Login</label>
+                        <input type="text" id="login" name="login" class="personal-form-input filled" placeholder="Текст" required/>
                     </div>
                     <div class="personal-form-group">
                         <label for="password" class="personal-form-label">Password</label>
@@ -87,7 +88,7 @@
                     </div>
                     <div class="personal-form-group">
                         <label for="repeat-password" class="personal-form-label">Repeat Password</label>
-                        <input type="password" id="repeat-password" class="personal-form-input" aria-label="Repeat Password" placeholder="Никто не узнает">
+                        <input type="password" id="repeat-password" class="personal-form-input" aria-label="Repeat Password" placeholder="Никто не узнает" required>
                     </div>
                 </div>
             </div>
@@ -102,8 +103,8 @@
             <div class="about-form-row">
                 <div class="about-form-column">
                     <div class="about-form-container">
-                        <label for="name" class="form-label">Имя</label>
-                        <input type="text" id="name" class="personal-form-input filled" placeholder="Текст" aria-label="Имя">
+                        <label for="nickname" class="form-label">Имя</label>
+                        <input type="text" id="nickname" name="nickname" class="personal-form-input filled" placeholder="Текст" aria-label="Имя" required>
 
                         <fieldset class="gender-container">
                             <legend class="gender-label">Пол</legend>
@@ -111,12 +112,12 @@
                                 <div class="male-option">
 <!--                                    <div class="radio-button"></div>-->
                                     <label for="male" class="female-label">Муж.</label>
-                                    <input type="radio" name="gender" id="male">
+                                    <input type="radio" name="gender" id="male" required>
                                 </div>
                                 <div class="female-option">
 <!--                                    <div class="radio-button"></div>-->
                                     <label for="female" class="female-label">Жен.</label>
-                                    <input type="radio" name="gender" id="female">
+                                    <input type="radio" name="gender" id="female" required>
                                 </div>
                             </div>
                         </fieldset>
@@ -156,56 +157,47 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/95668e9a84cfcd57934461c62baea52f162d8e415cca71856c786cc1ed877393?apiKey=34d7d013791846f1943a6733fbd2383a&" alt="" class="personal-image" />
             </div>
             <div class="personal-form-column">
-                <div class="personal-form-group">
+                <div class="personal-form-group" data-group="1">
                     <label for="choice" class="personal-form-label">Выбор элемента</label>
-                    <select id="choice" class="personal-form-input custom-input">
+                    <select id="choice" class="personal-form-input custom-input" data-choice="1">
                         <option value="" disabled selected>Выбор элемента и "другое"</option>
-                        <option value="option1">Опция 1</option>
-                        <option value="option2">Опция 2</option>
-                        <option value="option3">Опция 3</option>
-                        <option value="other">Другое</option>
                     </select>
-                    <input type="text" id="otherInput" class="personal-form-input filled" placeholder="Введите другое значение" style="display: none;" />
+                    <input type="text" id="otherInput" class="personal-form-input filled" data-other-input="1" placeholder="Введите другое значение" style="display: none;" />
                 </div>
-                <div class="personal-form-group">
+                <div class="personal-form-group" data-group="2">
                     <label for="choice2" class="personal-form-label">Выбор элемента</label>
-                    <select id="choice2" class="personal-form-input">
-                        <option value="option1">Опция 1</option>
-                        <option value="option2">Опция 2</option>
-                        <option value="option3">Опция 3</option>
-                        <option value="other">Другое</option>
+                    <select id="choice2" class="personal-form-input custom-input" data-choice="2">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
                     </select>
-                    <input type="text" id="otherInput2" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                    <input type="text" id="otherInput2" class="personal-form-input filled" data-other-input="2" placeholder="Введите другое значение" style="display: none;" />
                 </div>
-                <div class="personal-form-group">
+                <div class="personal-form-group" data-group="3">
                     <label for="choice3" class="personal-form-label">Выбор элемента</label>
-                    <select id="choice3" class="personal-form-input">
-                        <option value="option1">Опция 1</option>
-                        <option value="option2">Опция 2</option>
-                        <option value="option3">Опция 3</option>
-                        <option value="other">Другое</option>
+                    <select id="choice3" class="personal-form-input custom-input" data-choice="3">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
                     </select>
-                    <input type="text" id="otherInput3" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                    <input type="text" id="otherInput3" class="personal-form-input filled" data-other-input="3" placeholder="Введите другое значение" style="display: none;" />
                 </div>
-                <div class="personal-form-group">
+                <div class="personal-form-group" data-group="4">
                     <label for="choice4" class="personal-form-label">Выбор элемента</label>
-                    <select id="choice4" class="personal-form-input">
-                        <option value="option1">Опция 1</option>
-                        <option value="option2">Опция 2</option>
-                        <option value="option3">Опция 3</option>
-                        <option value="other">Другое</option>
+                    <select id="choice4" class="personal-form-input custom-input" data-choice="4">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
                     </select>
-                    <input type="text" id="otherInput4" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                    <input type="text" id="otherInput4" class="personal-form-input filled" data-other-input="4" placeholder="Введите другое значение" style="display: none;" />
                 </div>
-                <div class="personal-form-group">
+                <div class="personal-form-group" data-group="5">
                     <label for="choice5" class="personal-form-label">Выбор элемента</label>
-                    <select id="choice5" class="personal-form-input">
-                        <option value="option1">Опция 1</option>
-                        <option value="option2">Опция 2</option>
-                        <option value="option3">Опция 3</option>
-                        <option value="other">Другое</option>
+                    <select id="choice5" class="personal-form-input custom-input" data-choice="5">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
                     </select>
-                    <input type="text" id="otherInput5" class="personal-form-input" placeholder="Введите другое значение" style="display: none;" />
+                    <input type="text" id="otherInput5" class="personal-form-input filled" data-other-input="5" placeholder="Введите другое значение" style="display: none;" />
+                </div>
+                <div class="personal-form-group" data-group="6">
+                    <label for="choice6" class="personal-form-label">Выбор элемента</label>
+                    <select id="choice6" class="personal-form-input custom-input" data-choice="6">
+                        <option value="" disabled selected>Выбор элемента и "другое"</option>
+                    </select>
+                    <input type="text" id="otherInput6" class="personal-form-input filled" data-other-input="6" placeholder="Введите другое значение" style="display: none;" />
                 </div>
             </div>
         </div>
@@ -214,7 +206,7 @@
     <div class="divider"></div>
     <div class="form-content">
         <label class="consent-checkbox">
-            <input type="checkbox" class="checkbox-icon" id="consent-checkbox" aria-label="Consent checkbox">
+            <input type="checkbox" class="checkbox-icon" id="consent-checkbox" aria-label="Consent checkbox" required>
             <span class="consent-text">Я даю согласие на обработку моих персональных данных</span>
         </label>
         <button type="submit" class="register-button">Зарегистрироваться</button>
@@ -281,5 +273,6 @@
 </footer>
 <script src="script.js"></script>
 <script src="../login-form/script.js"></script>
+<script src="../auth.js"></script>
 </body>
 </html>

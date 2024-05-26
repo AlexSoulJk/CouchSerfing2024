@@ -1,0 +1,102 @@
+[
+  {
+    "QuestionRoomRule": {
+      "description": "Можно ли курить?"
+    },
+    "Rules": [
+      {
+      "description": "Можно на территории дома.",
+      "url_pic": "url_pic1"
+      },
+
+      {
+        "description": "Можно, но в специально отведённом месте.",
+        "url_pic": "url_pic2"
+      },
+      {
+        "description": "Нельзя на территории дома.",
+        "url_pic": "url_pic3"
+      }
+    ],
+
+    "QuestionRule": {
+      "description": "Курите ли вы?"
+    },
+    "AnswerRules": [
+      {
+      "description": "Да, необходимо место для курения в найденной комнате."
+      },
+      {
+        "description": "Да, но могу..."
+      },
+      {
+        "description": "Нет, веду здоровый образ жизни!"
+      }
+    ]
+  },
+
+  {
+    "QuestionRoomRule": {
+      "description": "Можно ли пить алкоголь?"
+    },
+    "Rules": [
+      {
+      "description": "Можно на территории дома.",
+      "url_pic": "url_pic1"
+      },
+
+      {
+        "description": "Можно, но в специально отведённом месте.",
+        "url_pic": "url_pic2"
+      },
+      {
+        "description": "Нельзя на территории дома.",
+        "url_pic": "url_pic3"
+      }
+    ],
+
+    "QuestionRule": {
+      "description": "Отношение к алкоголю?"
+    },
+    "AnswerRules": [
+      {
+      "description": "Позитивное, хочется иметь возможность выпить в найденной комнате."
+      },
+      {
+        "description": "Нейтральное, хочется иметь возможность выпить в специально отведённом месте."
+      },
+      {
+        "description": "Негативное, веду здоровый образ жизни!"
+      }
+    ]
+  },
+
+  {
+    "QuestionRoomRule": {
+      "description": "Можно ли проживать с животным?"
+    },
+    "Rules": [
+      {
+      "description": "Можно на территории дома.",
+      "url_pic": "url_pic1"
+      },
+
+      {
+        "description": "Нельзя на территории дома.",
+        "url_pic": "url_pic3"
+      }
+    ],
+
+    "QuestionRule": {
+      "description": "Имеется ли животное, с которым вы будете проживать в найденной комнате?"
+    },
+    "AnswerRules": [
+      {
+      "description": "Да"
+      },
+      {
+        "description": "Нет"
+      }
+    ]
+  }
+]
