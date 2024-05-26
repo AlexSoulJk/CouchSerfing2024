@@ -7,10 +7,13 @@ class PictureBase(BaseModel):
 
 
 class PictureCreate(PictureBase):
+    is_front: bool
     pass
+
 
 class PictureUpdate(BaseModel):
     id: int
+
 
 class Picture(PictureBase):
     id: int

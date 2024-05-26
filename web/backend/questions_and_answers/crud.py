@@ -89,7 +89,7 @@ async def delete_user_answers(answers_id: list[AnswerDelete],
             .where(UserAnswerRule.user_id == user_id)
 
     else:
-        stmt = update(UserAnswerOther) \
+        stmt = delete(UserAnswerOther) \
             .where(UserAnswerOther.id
                    .in_([item.id_user_answer for item in answers_id])) \
             .where(UserAnswerOther.user_id == user_id)

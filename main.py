@@ -9,6 +9,12 @@ from web.backend.auth.schemas import UserRead
 from web.backend.dependencies import get_current_user_by_token
 
 app = FastAPI(title="couch_surfing")
+app.include_router(prefix="/main", router=primary_router)
+
+
+@app.on_event("startup")
+async def startup_event():
+    await db.setup()
 
 origins = [
     "http://localhost:8000",

@@ -9,11 +9,18 @@ from .auth.schemas import UserRead
 from .room.schemas import RoomGet
 from .auth.router import fastapi_users_
 
+from sqlalchemy.orm import class_mapper
+
+
+def object_as_dict(obj):
+    return {c.key: getattr(obj, c.key)
+            for c in class_mapper(obj.__class__).columns}
+
 
 async def get_room_by_id(room_id: Annotated[int, Path]) -> RoomGet:
     room = await db.sql_query(query=select(Room).where(Room.id == room_id))
     if room is not None:
-        return room
+        return RoomGet(**object_as_dict(room))
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f"Room with id {room_id} not found")
@@ -33,5 +40,19 @@ async def get_current_user_by_token(user=Depends(fastapi_users_.current_user()))
     return user
 
 
+async def get_optional_current_user_by_token(user=Depends(fastapi_users_.current_user(optional=True))):
+    return user
+
+
 async def get_user_by_token(user=Depends(fastapi_users_.current_user(active=True))) -> Optional[UserRead]:
     return user
+
+
+async def is_room_owner(room: RoomGet = Depends(get_room_by_id),
+                        user=Depends(fastapi_users_.current_user(active=True))):
+    room_ = await db.sql_query(select(Room).where(Room.id == room.id).where(Room.user_id == user.id))
+    if room_ is not None:
+        return RoomGet(**object_as_dict(room_))
+    else:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail=f"Can't change room that doesn't yours.")

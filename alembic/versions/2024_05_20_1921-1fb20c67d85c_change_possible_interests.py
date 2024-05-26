@@ -36,7 +36,6 @@ def upgrade() -> None:
     op.drop_column('questionrules', 'description_interest')
     op.drop_column('questionrules', 'description_rule')
     op.add_column('rules', sa.Column('quest_id', sa.Integer(), nullable=True))
-    op.add_column('rules', sa.Column('description', sa.String(length=100), nullable=False))
     op.drop_constraint('rules_room_rule_id_fkey', 'rules', type_='foreignkey')
     op.create_foreign_key(None, 'rules', 'questionroomrules', ['quest_id'], ['id'])
     op.drop_column('rules', 'room_rule_id')

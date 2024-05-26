@@ -1,9 +1,10 @@
 import sqlalchemy
-from sqlalchemy import delete, select
+from sqlalchemy import delete, select, case, update
 
 from database.db import db
-from database.models import RoomRule, Room, Rule
-from web.backend.rule.schemas import RuleCreate
+from database.models import RoomRule, Room, Rule, QuestionRoomRule
+from web.backend.rule.schemas import RuleCreate, CardRuleGet, Question, RuleGet, CardRuleGetForChange, RuleGetForChange, \
+    RuleForChange
 from fastapi import HTTPException, status
 
 
@@ -37,9 +38,57 @@ async def get_rules_in_room(room_id: int):
 
 
 async def get_all_rules():
-    return await db.sql_query(query=select(Rule))
+    res = [CardRuleGet(question=Question(description=item.description),
+                       rules=[RuleGet(id=answer.id,
+                                      description=answer.description,
+                                      url_pic=answer.url_pic)
+                              for answer in await db.sql_query(select(Rule)
+                                                               .where(Rule.quest_id == item.id),
+                                                               single=False)])
+           for item in await db.sql_query(query=select(QuestionRoomRule),
+                                          single=False)]
+    return res
 
 
 async def get_rules_not_in_room(room_id: int):
     return await db.sql_query(query=select(Rule).join(
         RoomRule, Rule.id != RoomRule.rule_id).where(RoomRule.room_id == room_id))
+
+
+async def get_rules_in_room_for_change(room_id: int):
+    def get_info():
+        return [selected_ans.rule_id for selected_ans, _ in selected_answers], \
+            dict([(quest_id, selected_ans.id)
+                  for selected_ans, quest_id in selected_answers])
+
+    selected_answers = await db.sql_query(
+        query=select(RoomRule, QuestionRoomRule.id)
+        .join(Rule, RoomRule.rule_id == Rule.id)
+        .join(QuestionRoomRule, Rule.quest_id == QuestionRoomRule.id)
+        .where(RoomRule.room_id == room_id),
+        single=False, is_scalars=False
+    )
+    selected_answers_id, selected_info = get_info()
+    res = [CardRuleGetForChange(question=Question(description=item.description),
+                                rules=[RuleGetForChange(id=answer.id,
+                                                        description=answer.description,
+                                                        url_pic=answer.url_pic,
+                                                        is_selected=answer.id in selected_answers_id)
+                                       for answer in await db.sql_query(select(Rule)
+                                                                        .where(Rule.quest_id == item.id),
+                                                                        single=False)],
+                                id_user_rule=selected_info.get(item.id))
+           for item in await db.sql_query(query=select(QuestionRoomRule),
+                                          single=False)]
+    return res
+
+
+async def update_rules(rules: list[RuleForChange]):
+    whens = [(RoomRule.id == rule.id_user_answer, rule.id_rule) for rule in rules]
+
+    stmt = update(RoomRule) \
+        .where(RoomRule.id
+               .in_([item.id_user_answer for item in rules])) \
+        .values(rule_id=case(*whens, else_=RoomRule.rule_id))
+
+    await db.sql_query(stmt, is_update=True)
