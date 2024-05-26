@@ -9,7 +9,7 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
-
+from sqlalchemy import ForeignKey
 
 # revision identifiers, used by Alembic.
 revision: str = 'dee8bafa78de'
@@ -26,23 +26,11 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('rules',
-    sa.Column('room_rule_id', sa.Integer(), nullable=True),
-    sa.Column('description_rule', sa.String(length=100), nullable=False),
-    sa.Column('description_interest', sa.String(length=100), nullable=False),
-    sa.Column('url_pic', sa.String(length=100), nullable=False),
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['room_rule_id'], ['questionrules.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
-    op.create_table('roomrules',
-    sa.Column('room_id', sa.Integer(), nullable=True),
-    sa.Column('rule_id', sa.Integer(), nullable=True),
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['room_id'], ['rooms.id'], ),
-    sa.ForeignKeyConstraint(['rule_id'], ['rules.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
+    op.add_column('rules',
+                  sa.Column('room_rule_id', sa.Integer(), ForeignKey("questionrules.id"), nullable=True)
+                  )
+    op.add_column('rules', sa.Column('description_rule', sa.String(length=100), nullable=False))
+    op.add_column('rules', sa.Column('description_interest', sa.String(length=100), nullable=False))
     op.create_table('useranswerrules',
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('answer_id', sa.Integer(), nullable=True),

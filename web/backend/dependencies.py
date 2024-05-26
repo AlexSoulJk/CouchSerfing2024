@@ -40,6 +40,10 @@ async def get_current_user_by_token(user=Depends(fastapi_users_.current_user()))
     return user
 
 
+async def get_optional_current_user_by_token(user=Depends(fastapi_users_.current_user(optional=True))):
+    return user
+
+
 async def get_user_by_token(user=Depends(fastapi_users_.current_user(active=True))) -> Optional[UserRead]:
     return user
 
