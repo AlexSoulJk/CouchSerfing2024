@@ -1,9 +1,10 @@
 from typing import Optional
 
-from sqlalchemy import select, not_, null
+from sqlalchemy import select, not_, null, column, literal_column, literal, Integer
+from sqlalchemy.dialects.postgresql import array_agg, ARRAY
 
 from database.db import db
-from database.models import UserAnswerRule, Room, RoomRule, RoomPicture, Rule, AnswerRule
+from database.models import UserAnswerRule, Room, RoomRule, RoomPicture, Rule, AnswerRule, RoomFacility
 from web.backend.auth.schemas import UserRead
 from web.backend.filter_for_rooms.schemas import StartFilter, MainFilter, CardSchema, RoomSchema, Picture
 
@@ -38,18 +39,27 @@ async def get_start_list_for_user(user: Optional[UserRead],
         if len(answers_id) != 0:
             # Пользователь авторизован + есть анкета интересов. stm1
             stmt = (
-                select(Room, subquery.label('picture_url'))
+                select(
+                    Room,
+                    subquery.label('picture_url'),
+                    array_agg(RoomRule.rule_id).label("r_rules")
+                )
                 .join(RoomRule, Room.id == RoomRule.room_id)
                 .where(Room.user_id != user.id)
                 .where(Room.location == start_filter.location)
                 .where(Room.date_disabled == null())
                 .where(Room.date_deleted == null())
-                .where(RoomRule.rule_id.in_(
-                    answers_id))
                 .group_by(Room.id)
                 .order_by(Room.price)
+                .having(array_agg(RoomRule.rule_id).op("<@")(answers_id))
             )
-            print(str(stmt))
+            # for id in answers_id:
+            #     stmt = (
+            #         stmt
+            #         .where(RoomRule.rule_id.in_(
+            #             answers_id))
+            #     )
+            print(str(stmt.compile(compile_kwargs={"literal_binds": True})))
         else:
             stmt = (
                 select(Room, subquery.label('picture_url'))
@@ -58,6 +68,7 @@ async def get_start_list_for_user(user: Optional[UserRead],
                 .where(Room.date_disabled == null())
                 .where(Room.date_deleted == null())
                 .order_by(Room.price)
+
             )
     else:
         # Если пользователь не авторизован, возвращаем все активные комнаты. stm2
@@ -67,7 +78,8 @@ async def get_start_list_for_user(user: Optional[UserRead],
                 .where(Room.date_deleted == null())
                 .order_by(Room.price))
     rooms_and_pictures = await db.sql_query(stmt, single=False, is_scalars=False)
-    cards = [CardSchema(room=RoomSchema.from_orm(room), picture=Picture(url_picture=pic)) for room, pic
+
+    cards = [CardSchema(room=RoomSchema.from_orm(room), picture=Picture(url_picture=pic)) for room, pic, r_rules
              in rooms_and_pictures]
     return cards
 
@@ -77,18 +89,20 @@ async def get_main_list_for_user(user: Optional[UserRead],
     subquery = select(RoomPicture.url_picture).where(
         Room.id == RoomPicture.room_id).order_by(
         RoomPicture.date_created).where(RoomPicture.is_front).scalar_subquery()
-    print(user)
+    # print(user)
+    print(main_filter.facilities)
     if user is not None:
         print("main filter")
         stmt = applied_rules(user)
         # stmt = select(UserAnswerRule.answer_id).where(UserAnswerRule.user_id == user.id)
-        print("stmt = ", str(stmt))
+        # print("stmt = ", str(stmt))
         answers_id = await db.sql_query(stmt, single=False)
         print(answers_id)
         if len(answers_id) != 0:
             stmt = (
                 select(Room, subquery.label('picture_url'))
                 .join(RoomRule, Room.id == RoomRule.room_id)
+                .join(RoomFacility, RoomFacility.room_id == Room.id)
                 .where(Room.user_id != user.id)
                 .where(Room.location == main_filter.location)
                 .where(Room.price >= main_filter.min_price)
@@ -98,12 +112,12 @@ async def get_main_list_for_user(user: Optional[UserRead],
                 .where(Room.floor_number <= main_filter.max_floor)
                 .where(Room.date_disabled == null())
                 .where(Room.date_deleted == null())
-                .where(RoomRule.rule_id.in_(
-                    answers_id))
                 .group_by(Room.id)
                 .order_by(Room.price)
+                .having(array_agg(RoomRule.rule_id).op("<@")(answers_id))
+                .having(literal(main_filter.facilities, ARRAY(Integer)).op("<@")(array_agg(RoomFacility.facility_id)))
             )
-            print(str(stmt))
+            print(str(stmt.compile(compile_kwargs={"literal_binds": True})))
     else:
         stmt = (select(Room, subquery.label('picture_url'))
                 .where(Room.location == main_filter.location)
