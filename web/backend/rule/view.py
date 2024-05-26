@@ -28,7 +28,7 @@ async def get_rules_not_in_room_by_id(room: RoomGet = Depends(get_room_by_id)):
 # Запрос для получения всех правил комнаты.
 # Доступен для авторизованного пользователя в момент создания комнаты
 @router.get("/", response_model=list[CardRuleGet])
-async def get_all_rules(user: UserRead = Depends(get_user_by_token)):
+async def get_all_rules():
     return await crud.get_all_rules()
 
 
